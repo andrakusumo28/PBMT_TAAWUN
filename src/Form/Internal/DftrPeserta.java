@@ -443,7 +443,7 @@ public class DftrPeserta extends javax.swing.JInternalFrame {
             sqlResultSet = sqlStatement.executeQuery(buff.toString());
             if(sqlResultSet.next()){
 
-                no_ktp.setText(sqlResultSet.getString(1).toString());
+                no_ktp.setText(sqlResultSet.getString(1).toString()); 
                 
 
             }else{
