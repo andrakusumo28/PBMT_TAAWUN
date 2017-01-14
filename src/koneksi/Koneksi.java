@@ -55,7 +55,7 @@ public class Koneksi {
 //        return con;
 //    }
     
-    public Connection bukaKoneksi()throws SQLException{
+    public  Connection bukaKoneksi()throws SQLException{
 
         Connection connect;
   	try{

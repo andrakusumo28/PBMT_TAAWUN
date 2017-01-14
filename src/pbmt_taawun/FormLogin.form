@@ -89,6 +89,9 @@
           <Font name="Arial" size="14" style="1"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aerithActionButton1ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="aerith.swing.AerithActionButton" name="aerithActionButton2">
       <Properties>

@@ -52,6 +52,11 @@ public class FormLogin extends javax.swing.JFrame {
 
         aerithActionButton1.setText("LOGIN");
         aerithActionButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        aerithActionButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aerithActionButton1ActionPerformed(evt);
+            }
+        });
 
         aerithActionButton2.setText("CANCEL");
         aerithActionButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -91,6 +96,10 @@ public class FormLogin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void aerithActionButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aerithActionButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aerithActionButton1ActionPerformed
 
     /**
      * @param args the command line arguments
