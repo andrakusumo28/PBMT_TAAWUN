@@ -1,6 +1,7 @@
 package pbmt_taawun;
 
 import javax.swing.JOptionPane;
+import java.sql.*;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -10,7 +11,11 @@ import javax.swing.UIManager;
  * @author Administrator
  */
 public class FormLogin extends javax.swing.JFrame {
-
+    
+    public Connection conn;
+    public ResultSet Rs;
+    public Statement cn;
+    
     /**
      * Creates new form FormLogin
      */
@@ -19,7 +24,42 @@ public class FormLogin extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
         //this.setExtendedState(MAXIMIZED_BOTH);
     }
+     
+    public void koneksi() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pbmt_taawun", "root", "");
+            cn = conn.createStatement();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "koneksi gagal", "informasi", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e.getMessage());
+        }
+    }
     
+    public void cariuser() {
+        try {
+            koneksi();
+            String sql = "Select * from user where NAMA='" + txtuser.getText()
+                    + "' and password='" + txtpass.getText() + "'";
+            ResultSet rs = cn.executeQuery(sql);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(null, "Login Anda Berhasil",
+                        "Informasi", JOptionPane.INFORMATION_MESSAGE);
+                new MenuUtama().show();
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Username [" + txtuser.getText()
+                        + "] dan Password Tidak Sesuai!",
+                        "Peringatan", JOptionPane.WARNING_MESSAGE);
+            }
+
+            //bersih
+            txtuser.setText("");
+            txtpass.setText("");
+            txtuser.requestFocus();
+        } catch (Exception e) {
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,13 +70,12 @@ public class FormLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jFrame1 = new javax.swing.JFrame();
-        fTab1 = new Panel.Trans.FTab();
-        aerithActionButton1 = new aerith.swing.AerithActionButton();
-        aerithActionButton2 = new aerith.swing.AerithActionButton();
+        LoginBtn = new aerith.swing.AerithActionButton();
+        CancelBtn = new aerith.swing.AerithActionButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField1 = new javax.swing.JTextField();
+        txtpass = new javax.swing.JPasswordField();
+        txtuser = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -52,19 +91,19 @@ public class FormLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        aerithActionButton1.setText("LOGIN");
-        aerithActionButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        aerithActionButton1.addActionListener(new java.awt.event.ActionListener() {
+        LoginBtn.setText("LOGIN");
+        LoginBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        LoginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aerithActionButton1ActionPerformed(evt);
+                LoginBtnActionPerformed(evt);
             }
         });
 
-        aerithActionButton2.setText("CANCEL");
-        aerithActionButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        aerithActionButton2.addActionListener(new java.awt.event.ActionListener() {
+        CancelBtn.setText("CANCEL");
+        CancelBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        CancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                aerithActionButton2ActionPerformed(evt);
+                CancelBtnActionPerformed(evt);
             }
         });
 
@@ -83,13 +122,13 @@ public class FormLogin extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPasswordField1)
+                    .addComponent(txtpass)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(aerithActionButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
-                        .addComponent(aerithActionButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jTextField1))
+                    .addComponent(txtuser))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -98,31 +137,31 @@ public class FormLogin extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(aerithActionButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(aerithActionButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void aerithActionButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aerithActionButton2ActionPerformed
+    private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelBtnActionPerformed
         // TODO add your handling code here:
         closeapps();
-    }//GEN-LAST:event_aerithActionButton2ActionPerformed
+    }//GEN-LAST:event_CancelBtnActionPerformed
 
-    private void aerithActionButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aerithActionButton1ActionPerformed
+    private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
         // TODO add your handling code here:
         pbmt_taawun.MenuUtama mnu = new MenuUtama();
         mnu.setVisible(true);     
-    }//GEN-LAST:event_aerithActionButton1ActionPerformed
+    }//GEN-LAST:event_LoginBtnActionPerformed
 
     
     /**
@@ -179,13 +218,12 @@ public class FormLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private aerith.swing.AerithActionButton aerithActionButton1;
-    private aerith.swing.AerithActionButton aerithActionButton2;
-    private Panel.Trans.FTab fTab1;
+    private aerith.swing.AerithActionButton CancelBtn;
+    private aerith.swing.AerithActionButton LoginBtn;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField txtpass;
+    private javax.swing.JTextField txtuser;
     // End of variables declaration//GEN-END:variables
 }
