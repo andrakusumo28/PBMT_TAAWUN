@@ -1,11 +1,29 @@
 package Form.Internal;
 
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import koneksi.Koneksi;
+
 /**
  *
  * @author Administrator
  */
 public class InputDataBMT extends javax.swing.JInternalFrame {
 
+    Connection conn = null;
+    ResultSet sqlResultSet = null;
+    ResultSet sqlResultSet1 = null;
+    Statement sqlStatement = null;
+    Statement sqlStatement1 = null;
+    koneksi.Koneksi konek = new Koneksi();
+    private static final DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    Date date = new Date();
     /**
      * Creates new form InputDataBMT
      */
@@ -42,8 +60,8 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
         no_telp = new javax.swing.JTextField();
         mpw = new javax.swing.JTextField();
         mpd = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        cancel = new javax.swing.JButton();
+        simpan = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(102, 102, 255));
         setClosable(true);
@@ -61,6 +79,9 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
         jLabel4.setText("ALAMAT");
 
         no_bmt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                no_bmtKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 no_bmtKeyTyped(evt);
             }
@@ -102,12 +123,12 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("CANCEL");
+        cancel.setText("CANCEL");
 
-        jButton2.setText("SIMPAN");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        simpan.setText("SIMPAN");
+        simpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                simpanActionPerformed(evt);
             }
         });
 
@@ -150,9 +171,9 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(cancel)
                                 .addGap(59, 59, 59)
-                                .addComponent(jButton2))
+                                .addComponent(simpan))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(no_kontak, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                                 .addComponent(nama_kontak, javax.swing.GroupLayout.Alignment.TRAILING)))))
@@ -203,8 +224,8 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
                             .addComponent(no_kontak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(simpan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(0, 45, Short.MAX_VALUE))
         );
 
@@ -215,9 +236,70 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mpwActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+         if(no_bmt.getText() == null || no_agt_bmt.getText() == null)
+        {
+            JOptionPane.showMessageDialog(null, "Please..fill the box complete", "Information", JOptionPane.PLAIN_MESSAGE);
+        }else
+        {
+            try {
+                
+                conn = konek.bukaKoneksi();
+                sqlStatement = conn.createStatement();
+                sqlStatement1 = conn.createStatement();
+                String noBmt = no_bmt.getText().trim();
+                StringBuffer buff = new StringBuffer();
+                buff.append("SELECT * FROM data_bmt WHERE NIK_BMT ='").append(noBmt).append("'");
+                sqlResultSet = sqlStatement.executeQuery(buff.toString());
+                buff = new StringBuffer();
+                
+                if(sqlResultSet.next() == true)
+                {
+                    buff.append("UPDATE data_bmt set NAMA_BMT='").append(nama_bmt.getText()).append("',ALAMAT_BMT='").append(alamat.getText())
+                        .append("',NO_ANGGOTA_BMT='").append(no_agt_bmt.getText())
+                        .append("',MPD").append(mpd.getText()).append("',MPW='").append(mpw.getText())
+                        .append("',NO_TELPON='").append(no_telp.getText()).append("',NAMA_KONTAK='").append(nama_kontak.getText())
+                        .append("',NOMOR_KONTAK='").append(no_kontak.getText())
+                        .append("' WHERE NIK_BMT='").append(noBmt).append("'");
+                    
+                    System.out.println(buff.toString());
+                    sqlStatement1.executeUpdate(buff.toString());
+                    JOptionPane.showMessageDialog(null, "Update Data Success..", "Information", JOptionPane.INFORMATION_MESSAGE);
+                }else
+                {
+                    
+                    buff.append("INSERT INTO data_bmt VALUES('").append(no_bmt.getText()).append("','")
+                        .append(nama_bmt.getText()).append("','").append(alamat.getText()).append("','")
+                        .append(no_agt_bmt.getText()).append("','").append(mpd.getText()).append("','")
+                        .append(mpw.getText()).append("','").append(no_telp).append("','")
+                        .append(nama_kontak.getText()).append("','").append(no_kontak.getText()).append("')");
+                    
+                    System.out.println(buff.toString());
+                    sqlStatement1.executeUpdate(buff.toString());
+                    JOptionPane.showMessageDialog(null, "Insert Data Success", "Information", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Information", JOptionPane.PLAIN_MESSAGE);
+                e.printStackTrace();
+            }finally{
+                
+                try {
+                    if(sqlResultSet1 != null)
+                    {
+                        sqlResultSet1.close();
+                    }
+                    if(sqlStatement1 != null)
+                    {
+                        sqlStatement1.close();
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage(), "Information", JOptionPane.PLAIN_MESSAGE);
+                }
+            
+            }
+        }
+    }//GEN-LAST:event_simpanActionPerformed
 
     private void no_bmtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_no_bmtKeyTyped
         // TODO add your handling code here:
@@ -267,11 +349,48 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_no_kontakKeyTyped
 
+    private void no_bmtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_no_bmtKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+
+            conn = konek.bukaKoneksi();
+            sqlStatement = conn.createStatement();
+            sqlStatement1 = conn.createStatement();
+    //        conn.commit();
+
+            String bmt = no_bmt.getText().trim();
+            StringBuffer buff = new StringBuffer();
+            buff.append("SELECT * FROM data_bmt WHERE NIK_BMT ='").append(bmt).append("'");
+            sqlResultSet = sqlStatement.executeQuery(buff.toString());
+            if(sqlResultSet.next()){
+                
+                 no_bmt.setText(sqlResultSet.getString(1).toString());
+                 nama_bmt.setText(sqlResultSet.getString(2).toString());
+                 alamat.setText(sqlResultSet.getString(3).toString());
+                 no_agt_bmt.setText(sqlResultSet.getString(4).toString());
+                 mpd.setText(sqlResultSet.getString(5).toString());
+                 mpw.setText(sqlResultSet.getString(6).toString());
+                 no_telp.setText(sqlResultSet.getString(7).toString());
+                 nama_kontak.setText(sqlResultSet.getString(8).toString());
+                 no_kontak.setText(sqlResultSet.getString(9).toString());
+                 
+            }else{
+                
+                nama_bmt.setFocusable(true);
+                
+            }
+            } catch (Exception es) {
+                JOptionPane.showMessageDialog(null, es.getMessage(), "Information", JOptionPane.ERROR);
+                es.printStackTrace();
+            }
+        } 
+    }//GEN-LAST:event_no_bmtKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField alamat;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton cancel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -290,5 +409,6 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
     private javax.swing.JTextField no_bmt;
     private javax.swing.JTextField no_kontak;
     private javax.swing.JTextField no_telp;
+    private javax.swing.JButton simpan;
     // End of variables declaration//GEN-END:variables
 }
