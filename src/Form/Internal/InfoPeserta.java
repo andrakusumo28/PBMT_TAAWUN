@@ -122,7 +122,7 @@ public class InfoPeserta extends javax.swing.JInternalFrame {
             Object[] row = new Object[columns];
             for (int i = 1; i <= columns; i++)
             {  
-                row[i - 1] = rs.getObject(i);
+                row[i - 1] = rs.getObject(i); 
                 
             }
             ((DefaultTableModel) table.getModel()).insertRow(rs.getRow()-1,row);
