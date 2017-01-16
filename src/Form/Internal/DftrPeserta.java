@@ -408,7 +408,7 @@ public class DftrPeserta extends javax.swing.JInternalFrame {
             buff.append("SELECT * FROM data_peserta WHERE NO_KTP ='").append(ktp).append("'");
             sqlResultSet = sqlStatement.executeQuery(buff.toString());
             if(sqlResultSet.next()){
-                
+                 
                 no_ktp.setEnabled(false);
                 no_ktp.setText(sqlResultSet.getString(1).toString()); 
                 nama.setText(sqlResultSet.getString(3).toString());
