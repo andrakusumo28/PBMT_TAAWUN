@@ -174,6 +174,11 @@ public class DftrPeserta extends javax.swing.JInternalFrame {
 
         cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/remove_32.png"))); // NOI18N
         cancel.setText("BATAL");
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
 
         daftar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/simpan.png"))); // NOI18N
         daftar.setText("DAFTAR");
@@ -468,7 +473,8 @@ public class DftrPeserta extends javax.swing.JInternalFrame {
                         .append("',JGK_WAKTU='").append(Integer.valueOf(jangka_waktu.getText()))
                         .append("',IURAN_JIWA='").append(Integer.valueOf(iuran_jiwa.getText()))
                         .append("',IURAN_KEBAKARAN='").append(Integer.valueOf(iuran_kebakaran.getText()))
-                        .append("',JML_IURAN='").append(Integer.valueOf(jml_iuran.getText()));
+                        .append("',JML_IURAN='").append(Integer.valueOf(jml_iuran.getText()))
+                        .append("' WHERE NO_KTP ='").append(ktp).append("'");
                     System.out.println(buff.toString());
                     sqlStatement1.executeUpdate(buff.toString());
                     JOptionPane.showMessageDialog(null, "Update Data Success..", "Information", JOptionPane.INFORMATION_MESSAGE);
@@ -487,6 +493,7 @@ public class DftrPeserta extends javax.swing.JInternalFrame {
                     sqlStatement1.executeUpdate(buff.toString());
                     JOptionPane.showMessageDialog(null, "Insert Data Success", "Information", JOptionPane.INFORMATION_MESSAGE);
                 }
+                clearData();
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), "Information", JOptionPane.PLAIN_MESSAGE);
                 e.printStackTrace();
@@ -607,6 +614,11 @@ public class DftrPeserta extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+        // TODO add your handling code here:
+        clearData();
+    }//GEN-LAST:event_cancelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField alamat;
@@ -649,4 +661,25 @@ public class DftrPeserta extends javax.swing.JInternalFrame {
     private com.toedter.calendar.JDateChooser tgltempo;
     private javax.swing.JTextField tmpt_lahir;
     // End of variables declaration//GEN-END:variables
+
+    private void clearData()
+    {
+        no_ktp.setText("");
+        nama.setText("");
+        alamat.setText("");
+        tmpt_lahir.setText("");
+        tgllahir.setDate(date);
+        tglakad.setDate(date);
+        tgltempo.setDate(date);
+        lokasi_usaha.setText("");
+        jns_usaha.setText("");
+        no_bmt.setText("");
+        rekening.setText("");
+        jml_pembiayaan.setText("");
+        jangka_waktu.setText("");
+        iuran_jiwa.setText("0");
+        iuran_jiwa.setEnabled(false);
+        iuran_kebakaran.setText("");
+        iuran_kebakaran.setEnabled(false);
+    }
 }

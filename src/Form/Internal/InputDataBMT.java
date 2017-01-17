@@ -308,7 +308,7 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
 
 	 
             i=String.valueOf(evt.getKeyChar());
-            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();;
+            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();
             cond=false;
         }
     }//GEN-LAST:event_no_bmtKeyTyped
@@ -320,7 +320,7 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
 
 	 
             i=String.valueOf(evt.getKeyChar());
-            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();;
+            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();
             cond=false;
         }
     }//GEN-LAST:event_no_agt_bmtKeyTyped
@@ -344,7 +344,7 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
 
 	 
             i=String.valueOf(evt.getKeyChar());
-            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();;
+            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();
             cond=false;
         }
     }//GEN-LAST:event_no_kontakKeyTyped
@@ -360,20 +360,20 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
     //        conn.commit();
 
             String bmt = no_bmt.getText().trim();
-            StringBuffer buff = new StringBuffer();
+            StringBuilder buff = new StringBuilder();
             buff.append("SELECT * FROM data_bmt WHERE NIK_BMT ='").append(bmt).append("'");
             sqlResultSet = sqlStatement.executeQuery(buff.toString());
             if(sqlResultSet.next()){
                 
-                 no_bmt.setText(sqlResultSet.getString(1).toString());
-                 nama_bmt.setText(sqlResultSet.getString(2).toString());
-                 alamat.setText(sqlResultSet.getString(3).toString());
-                 no_agt_bmt.setText(sqlResultSet.getString(4).toString());
-                 mpd.setText(sqlResultSet.getString(5).toString());
-                 mpw.setText(sqlResultSet.getString(6).toString());
-                 no_telp.setText(sqlResultSet.getString(7).toString());
-                 nama_kontak.setText(sqlResultSet.getString(8).toString());
-                 no_kontak.setText(sqlResultSet.getString(9).toString());
+                 no_bmt.setText(sqlResultSet.getString(1));
+                 nama_bmt.setText(sqlResultSet.getString(2));
+                 alamat.setText(sqlResultSet.getString(3));
+                 no_agt_bmt.setText(sqlResultSet.getString(4));
+                 mpd.setText(sqlResultSet.getString(5));
+                 mpw.setText(sqlResultSet.getString(6));
+                 no_telp.setText(sqlResultSet.getString(7));
+                 nama_kontak.setText(sqlResultSet.getString(8));
+                 no_kontak.setText(sqlResultSet.getString(9));
                  
             }else{
                 
