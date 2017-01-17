@@ -17,10 +17,6 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Container class="Panel.Trans.FTab" name="fTab1">
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
-    </Container>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
@@ -55,14 +51,14 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPasswordField1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtpass" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="aerithActionButton1" min="-2" pref="108" max="-2" attributes="0"/>
+                      <Component id="LoginBtn" min="-2" pref="108" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="aerithActionButton2" min="-2" pref="112" max="-2" attributes="0"/>
+                      <Component id="CancelBtn" min="-2" pref="112" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jTextField1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="txtuser" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -74,17 +70,17 @@
               <EmptySpace pref="20" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtuser" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jPasswordField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtpass" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="aerithActionButton2" min="-2" max="-2" attributes="0"/>
-                  <Component id="aerithActionButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="CancelBtn" min="-2" max="-2" attributes="0"/>
+                  <Component id="LoginBtn" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
           </Group>
@@ -92,7 +88,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="aerith.swing.AerithActionButton" name="aerithActionButton1">
+    <Component class="aerith.swing.AerithActionButton" name="LoginBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="LOGIN"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -100,10 +96,10 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aerithActionButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoginBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="aerith.swing.AerithActionButton" name="aerithActionButton2">
+    <Component class="aerith.swing.AerithActionButton" name="CancelBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="CANCEL"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -111,7 +107,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aerithActionButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CancelBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -124,9 +120,9 @@
         <Property name="text" type="java.lang.String" value="PASSWORD        :"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+    <Component class="javax.swing.JPasswordField" name="txtpass">
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="txtuser">
     </Component>
   </SubComponents>
 </Form>

@@ -1,8 +1,28 @@
 ﻿# Host: localhost  (Version 5.5.5-10.1.8-MariaDB)
-# Date: 2017-01-10 17:57:12
+# Date: 2017-01-17 03:13:20
 # Generator: MySQL-Front 5.4  (Build 4.115) - http://www.mysqlfront.de/
 
 /*!40101 SET NAMES utf8 */;
+
+#
+# Structure for table "admin"
+#
+
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(50) NOT NULL,
+  `alamat` text NOT NULL,
+  `no_telpon` varchar(30) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+#
+# Data for table "admin"
+#
+
 
 #
 # Structure for table "buku_besar"
@@ -163,12 +183,16 @@ CREATE TABLE `user` (
   `NOMOR` int(11) NOT NULL AUTO_INCREMENT,
   `NAMA` varchar(60) NOT NULL,
   `PASSWORD` varchar(20) NOT NULL,
+  `PASSLAMA` varchar(30) NOT NULL DEFAULT '',
   `KEWENANGAN` varchar(30) NOT NULL,
   `KETERANGAN` varchar(100) NOT NULL,
   PRIMARY KEY (`NOMOR`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "user"
 #
 
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'ANDRA','QWERTY123','admin123','Admin','Superuser');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;

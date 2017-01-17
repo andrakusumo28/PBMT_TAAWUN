@@ -3,30 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/X:/PBMT_TAAWUN/src/pbmt_taawun/MenuUtama.java</file>
-            <file>file:/X:/PBMT_TAAWUN/src/pbmt_taawun/Main.java</file>
-            <file>file:/X:/PBMT_TAAWUN/src/pbmt_taawun/UserAdmin.java</file>
-            <file>file:/X:/PBMT_TAAWUN/src/Form/Internal/InfoPeserta.java</file>
-            <file>file:/X:/PBMT_TAAWUN/src/Form/Internal/InfoTagihan.java</file>
-            <file>file:/X:/PBMT_TAAWUN/src/pbmt_taawun/FormLogin.java</file>
-        </group>
-        <group name="imcare-edccomm">
-            <file>file:/C:/Users/fajar.saputro/Documents/NetBeansProjects/PBMT_TAAWUN/src/Form/Internal/DftrPeserta.java</file>
-            <file>file:/C:/Users/fajar.saputro/Documents/NetBeansProjects/PBMT_TAAWUN/src/pbmt_taawun/MenuUtama.java</file>
-            <file>file:/C:/Users/fajar.saputro/Documents/NetBeansProjects/PBMT_TAAWUN/src/pbmt_taawun/FormLogin.java</file>
-            <file>file:/C:/Users/fajar.saputro/Documents/NetBeansProjects/PBMT_TAAWUN/src/koneksi/Koneksi.java</file>
-            <file>file:/C:/Users/fajar.saputro/Documents/NetBeansProjects/PBMT_TAAWUN/src/Form/Internal/InfoTagihan.java</file>
-            <file>file:/C:/Users/fajar.saputro/Documents/NetBeansProjects/PBMT_TAAWUN/src/pbmt_taawun/Main.java</file>
-=======
-            <file>file:/X:/PBMT_TAAWUN/src/pbmt_taawun/UserAdmin.java</file>
-            <file>file:/X:/PBMT_TAAWUN/src/pbmt_taawun/Main.java</file>
             <file>file:/X:/PBMT_TAAWUN/src/Form/Internal/DftrPeserta.java</file>
-            <file>file:/X:/PBMT_TAAWUN/src/Form/Internal/InfoTagihan.java</file>
-            <file>file:/X:/PBMT_TAAWUN/src/Form/Internal/InfoPeserta.java</file>
-            <file>file:/X:/PBMT_TAAWUN/src/pbmt_taawun/MenuUtama.java</file>
-            <file>file:/X:/PBMT_TAAWUN/src/pbmt_taawun/FormLogin.java</file>
->>>>>>> origin/master
+            <file>file:/X:/PBMT_TAAWUN/src/Form/Internal/UbahDataBMT.java</file>
+            <file>file:/X:/PBMT_TAAWUN/src/Form/Internal/InputAccount.java</file>
+            <file>file:/X:/PBMT_TAAWUN/src/Form/Internal/InputDataBMT.java</file>
         </group>
     </open-files>
 </project-private>
