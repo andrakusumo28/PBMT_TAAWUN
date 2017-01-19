@@ -1,3 +1,7 @@
 !.gitignore
-/src
+/build/
 /dist/
+/nbproject/
+/test/
+build.xml
+manifest.mf
