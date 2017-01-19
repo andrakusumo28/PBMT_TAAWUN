@@ -4,8 +4,11 @@
  */
 package Panel.Trans;
 import java.awt.Color;
+import static java.awt.Color.white;
 import java.awt.Cursor;
+import static java.awt.Cursor.HAND_CURSOR;
 import java.awt.Font;
+import static java.awt.Font.BOLD;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.Icon;
@@ -24,11 +27,11 @@ public class ButtonVO2 extends JButton {
         setContentAreaFilled(false);
         setFocusPainted(false);
         setOpaque(false);
-        setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        setFont(getFont().deriveFont(Font.BOLD));
-        setForeground(Color.white);
-        setCursor(new Cursor(Cursor.HAND_CURSOR));
+        setHorizontalTextPosition(CENTER);
+        setVerticalTextPosition(BOTTOM);
+        setFont(getFont().deriveFont(BOLD));
+        setForeground(white);
+        setCursor(new Cursor(HAND_CURSOR));
 
         addMouseListener(new MouseAdapter() {
 

@@ -10,7 +10,6 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import koneksi.Koneksi;
 
-
 /**
  *
  * @author Administrator
@@ -25,15 +24,28 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
     koneksi.Koneksi konek = new Koneksi();
     private static final DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
-    
     /**
      * Creates new form InputDataBMT
      */
     public InputDataBMT() {
         initComponents();
-        this.setLocation(330, 145);
+        this.setLocation(277, 145);
     }
-
+    
+    private void bersih() {
+        //InputDataBMT();
+        no_agt_bmt.setText("");
+        no_bmt.setText("");
+        no_kontak.setText("");
+        no_telp.setText("");
+        mpd.setText("");
+        mpw.setText("");
+        nama_kontak.setText("");
+        alamat.setText("");
+        nama_bmt.setText("");
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -64,6 +76,28 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
         mpd = new javax.swing.JTextField();
         cancel = new javax.swing.JButton();
         simpan = new javax.swing.JButton();
+        jInternalFrame1 = new javax.swing.JInternalFrame();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        no_bmt1 = new javax.swing.JTextField();
+        nama_bmt1 = new javax.swing.JTextField();
+        alamat1 = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        no_agt_bmt1 = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        nama_kontak1 = new javax.swing.JTextField();
+        no_kontak1 = new javax.swing.JTextField();
+        no_telp1 = new javax.swing.JTextField();
+        mpw1 = new javax.swing.JTextField();
+        mpd1 = new javax.swing.JTextField();
+        cancel1 = new javax.swing.JButton();
+        simpan1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(102, 102, 255));
         setClosable(true);
@@ -81,6 +115,9 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
         jLabel4.setText("ALAMAT");
 
         no_bmt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                no_bmtKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 no_bmtKeyTyped(evt);
             }
@@ -94,14 +131,16 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel6.setText("              MPD");
+        jLabel6.setText("                    MPD");
 
-        jLabel7.setText("              MPW");
+        jLabel7.setText("                   MPW");
 
-        jLabel8.setText("   NO.TELPON");
+        jLabel8.setText("        NO.TELPON");
 
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("NAMA KONTAK");
 
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("NO.KONTAK");
 
         no_kontak.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -123,6 +162,11 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
         });
 
         cancel.setText("CANCEL");
+        cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelActionPerformed(evt);
+            }
+        });
 
         simpan.setText("SIMPAN");
         simpan.addActionListener(new java.awt.event.ActionListener() {
@@ -130,6 +174,160 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
                 simpanActionPerformed(evt);
             }
         });
+
+        jInternalFrame1.setBackground(new java.awt.Color(102, 102, 255));
+        jInternalFrame1.setClosable(true);
+        jInternalFrame1.setForeground(new java.awt.Color(0, 0, 0));
+        jInternalFrame1.setMaximizable(true);
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("INPUT DATA BMT");
+
+        jLabel12.setText("NO.INDUK BMT");
+
+        jLabel13.setText("NAMA BMT");
+
+        jLabel14.setText("ALAMAT");
+
+        no_bmt1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                no_bmt1KeyTyped(evt);
+            }
+        });
+
+        jLabel15.setText("NO.ANGGOTA BMT");
+
+        no_agt_bmt1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                no_agt_bmt1KeyTyped(evt);
+            }
+        });
+
+        jLabel16.setText("              MPD");
+
+        jLabel17.setText("              MPW");
+
+        jLabel18.setText("   NO.TELPON");
+
+        jLabel19.setText("NAMA KONTAK");
+
+        jLabel20.setText("NO.KONTAK");
+
+        no_kontak1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                no_kontak1KeyTyped(evt);
+            }
+        });
+
+        no_telp1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                no_telp1KeyTyped(evt);
+            }
+        });
+
+        mpw1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mpw1ActionPerformed(evt);
+            }
+        });
+
+        cancel1.setText("CANCEL");
+
+        simpan1.setText("SIMPAN");
+        simpan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simpan1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
+        jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
+        jInternalFrame1Layout.setHorizontalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(alamat1)
+                    .addComponent(no_bmt1)
+                    .addComponent(nama_bmt1)
+                    .addComponent(no_agt_bmt1, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mpw1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(no_telp1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addComponent(cancel1)
+                        .addGap(51, 51, 51)
+                        .addComponent(simpan1))
+                    .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(no_kontak1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                        .addComponent(nama_kontak1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(mpd1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37))
+        );
+        jInternalFrame1Layout.setVerticalGroup(
+            jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(no_bmt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(nama_bmt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(alamat1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(no_agt_bmt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(mpd1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(mpw1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17))
+                        .addGap(18, 18, 18)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(no_telp1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel19)
+                            .addComponent(nama_kontak1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel20)
+                            .addComponent(no_kontak1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(simpan1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cancel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,26 +347,36 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
                     .addComponent(no_bmt)
                     .addComponent(nama_bmt)
                     .addComponent(no_agt_bmt, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
-                .addGap(0, 4, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mpw, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(no_telp, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cancel)
-                        .addGap(51, 51, 51)
-                        .addComponent(simpan))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(no_kontak, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                        .addComponent(nama_kontak, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(mpd, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(cancel)
+                                .addGap(59, 59, 59)
+                                .addComponent(simpan))
+                            .addComponent(no_kontak, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                            .addComponent(nama_kontak, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(mpw, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(no_telp)
+                            .addComponent(mpd))))
                 .addGap(37, 37, 37))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,8 +387,7 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(no_bmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
+                            .addComponent(no_bmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -195,12 +402,14 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
                             .addComponent(no_agt_bmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
-                        .addComponent(mpd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(mpd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(mpw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(no_telp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -217,6 +426,11 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
                             .addComponent(simpan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(0, 45, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -228,7 +442,7 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
 
     private void simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanActionPerformed
         // TODO add your handling code here:
-        if(no_bmt.getText() == null || no_agt_bmt.getText() == null)
+         if(no_bmt.getText() == null || no_agt_bmt.getText() == null)
         {
             JOptionPane.showMessageDialog(null, "Please..fill the box complete", "Information", JOptionPane.PLAIN_MESSAGE);
         }else
@@ -298,7 +512,7 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
 
 	 
             i=String.valueOf(evt.getKeyChar());
-            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();;
+            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();
             cond=false;
         }
     }//GEN-LAST:event_no_bmtKeyTyped
@@ -310,14 +524,13 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
 
 	 
             i=String.valueOf(evt.getKeyChar());
-            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();;
+            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();
             cond=false;
         }
     }//GEN-LAST:event_no_agt_bmtKeyTyped
 
     private void no_telpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_no_telpKeyTyped
         // TODO add your handling code here:
-        
         boolean cond=true;String i = "";
 	while(cond){
 
@@ -330,24 +543,194 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
 
     private void no_kontakKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_no_kontakKeyTyped
         // TODO add your handling code here:
-        
         boolean cond=true;String i = "";
 	while(cond){
 
 	 
             i=String.valueOf(evt.getKeyChar());
-            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();;
+            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();
             cond=false;
         }
     }//GEN-LAST:event_no_kontakKeyTyped
-    
+
+    private void no_bmtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_no_bmtKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+
+            conn = konek.bukaKoneksi();
+            sqlStatement = conn.createStatement();
+            sqlStatement1 = conn.createStatement();
+    //        conn.commit();
+
+            String bmt = no_bmt.getText().trim();
+            StringBuilder buff = new StringBuilder();
+            buff.append("SELECT * FROM data_bmt WHERE NIK_BMT ='").append(bmt).append("'");
+            sqlResultSet = sqlStatement.executeQuery(buff.toString());
+            if(sqlResultSet.next()){
+                
+                 no_bmt.setText(sqlResultSet.getString(1));
+                 nama_bmt.setText(sqlResultSet.getString(2));
+                 alamat.setText(sqlResultSet.getString(3));
+                 no_agt_bmt.setText(sqlResultSet.getString(4));
+                 mpd.setText(sqlResultSet.getString(5));
+                 mpw.setText(sqlResultSet.getString(6));
+                 no_telp.setText(sqlResultSet.getString(7));
+                 nama_kontak.setText(sqlResultSet.getString(8));
+                 no_kontak.setText(sqlResultSet.getString(9));
+                 
+            }else{
+                
+                nama_bmt.setFocusable(true);
+                
+            }
+            } catch (Exception es) {
+                JOptionPane.showMessageDialog(null, es.getMessage(), "Information", JOptionPane.ERROR);
+                es.printStackTrace();
+            }
+        } 
+    }//GEN-LAST:event_no_bmtKeyPressed
+
+    private void no_bmt1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_no_bmt1KeyTyped
+        // TODO add your handling code here:
+        boolean cond=true;String i = "";
+        while(cond){
+
+            i=String.valueOf(evt.getKeyChar());
+            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();;
+            cond=false;
+        }
+    }//GEN-LAST:event_no_bmt1KeyTyped
+
+    private void no_agt_bmt1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_no_agt_bmt1KeyTyped
+        // TODO add your handling code here:
+        boolean cond=true;String i = "";
+        while(cond){
+
+            i=String.valueOf(evt.getKeyChar());
+            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();;
+            cond=false;
+        }
+    }//GEN-LAST:event_no_agt_bmt1KeyTyped
+
+    private void no_kontak1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_no_kontak1KeyTyped
+        // TODO add your handling code here:
+
+        boolean cond=true;String i = "";
+        while(cond){
+
+            i=String.valueOf(evt.getKeyChar());
+            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();;
+            cond=false;
+        }
+    }//GEN-LAST:event_no_kontak1KeyTyped
+
+    private void no_telp1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_no_telp1KeyTyped
+        // TODO add your handling code here:
+
+        boolean cond=true;String i = "";
+        while(cond){
+
+            i=String.valueOf(evt.getKeyChar());
+            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();;
+            cond=false;
+        }
+    }//GEN-LAST:event_no_telp1KeyTyped
+
+    private void mpw1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mpw1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mpw1ActionPerformed
+
+    private void simpan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpan1ActionPerformed
+        // TODO add your handling code here:
+        if(no_bmt.getText() == null || no_agt_bmt.getText() == null)
+        {
+            JOptionPane.showMessageDialog(null, "Please..fill the box complete", "Information", JOptionPane.PLAIN_MESSAGE);
+        }else
+        {
+            try {
+
+                conn = konek.bukaKoneksi();
+                sqlStatement = conn.createStatement();
+                sqlStatement1 = conn.createStatement();
+                String noBmt = no_bmt.getText().trim();
+                StringBuffer buff = new StringBuffer();
+                buff.append("SELECT * FROM data_bmt WHERE NIK_BMT ='").append(noBmt).append("'");
+                sqlResultSet = sqlStatement.executeQuery(buff.toString());
+                buff = new StringBuffer();
+
+                if(sqlResultSet.next() == true)
+                {
+                    buff.append("UPDATE data_bmt set NAMA_BMT='").append(nama_bmt.getText()).append("',ALAMAT_BMT='").append(alamat.getText())
+                    .append("',NO_ANGGOTA_BMT='").append(no_agt_bmt.getText())
+                    .append("',MPD").append(mpd.getText()).append("',MPW='").append(mpw.getText())
+                    .append("',NO_TELPON='").append(no_telp.getText()).append("',NAMA_KONTAK='").append(nama_kontak.getText())
+                    .append("',NOMOR_KONTAK='").append(no_kontak.getText())
+                    .append("' WHERE NIK_BMT='").append(noBmt).append("'");
+
+                    System.out.println(buff.toString());
+                    sqlStatement1.executeUpdate(buff.toString());
+                    JOptionPane.showMessageDialog(null, "Update Data Success..", "Information", JOptionPane.INFORMATION_MESSAGE);
+                }else
+                {
+
+                    buff.append("INSERT INTO data_bmt VALUES('").append(no_bmt.getText()).append("','")
+                    .append(nama_bmt.getText()).append("','").append(alamat.getText()).append("','")
+                    .append(no_agt_bmt.getText()).append("','").append(mpd.getText()).append("','")
+                    .append(mpw.getText()).append("','").append(no_telp).append("','")
+                    .append(nama_kontak.getText()).append("','").append(no_kontak.getText()).append("')");
+
+                    System.out.println(buff.toString());
+                    sqlStatement1.executeUpdate(buff.toString());
+                    JOptionPane.showMessageDialog(null, "Insert Data Success", "Information", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Information", JOptionPane.PLAIN_MESSAGE);
+                e.printStackTrace();
+            }finally{
+
+                try {
+                    if(sqlResultSet1 != null)
+                    {
+                        sqlResultSet1.close();
+                    }
+                    if(sqlStatement1 != null)
+                    {
+                        sqlStatement1.close();
+                    }
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage(), "Information", JOptionPane.PLAIN_MESSAGE);
+                }
+
+            }
+        }
+    }//GEN-LAST:event_simpan1ActionPerformed
+
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
+        // TODO add your handling code here:
+        bersih();
+    }//GEN-LAST:event_cancelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField alamat;
+    private javax.swing.JTextField alamat1;
     private javax.swing.JButton cancel;
+    private javax.swing.JButton cancel1;
+    private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -356,13 +739,22 @@ public class InputDataBMT extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField mpd;
+    private javax.swing.JTextField mpd1;
     private javax.swing.JTextField mpw;
+    private javax.swing.JTextField mpw1;
     private javax.swing.JTextField nama_bmt;
+    private javax.swing.JTextField nama_bmt1;
     private javax.swing.JTextField nama_kontak;
+    private javax.swing.JTextField nama_kontak1;
     private javax.swing.JTextField no_agt_bmt;
+    private javax.swing.JTextField no_agt_bmt1;
     private javax.swing.JTextField no_bmt;
+    private javax.swing.JTextField no_bmt1;
     private javax.swing.JTextField no_kontak;
+    private javax.swing.JTextField no_kontak1;
     private javax.swing.JTextField no_telp;
+    private javax.swing.JTextField no_telp1;
     private javax.swing.JButton simpan;
+    private javax.swing.JButton simpan1;
     // End of variables declaration//GEN-END:variables
 }

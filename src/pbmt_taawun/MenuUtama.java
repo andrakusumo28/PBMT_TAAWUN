@@ -54,7 +54,7 @@ public class MenuUtama extends javax.swing.JFrame {
         MenuTransaksi = new javax.swing.JMenu();
         DaftarPeserta = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
-        mn_anggota = new javax.swing.JMenuItem();
+        aggt_bmt = new javax.swing.JMenuItem();
         jSeparator11 = new javax.swing.JPopupMenu.Separator();
         BayarIuran = new javax.swing.JMenuItem();
         MenuInformasi = new javax.swing.JMenu();
@@ -100,7 +100,6 @@ public class MenuUtama extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         labelWaktu.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        labelWaktu.setForeground(new java.awt.Color(0, 0, 0));
         labelWaktu.setText("day, date month year hh:mm:ss");
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -124,12 +123,10 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jMenuBar1.setFont(new java.awt.Font("Dotum", 1, 14)); // NOI18N
 
         MenuTransaksi.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         MenuTransaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/connect.png"))); // NOI18N
         MenuTransaksi.setText("Menu Transaksi");
-        MenuTransaksi.setToolTipText("");
 
         DaftarPeserta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/medium 130.png"))); // NOI18N
         DaftarPeserta.setText("Pendaftaran Peserta");
@@ -142,15 +139,15 @@ public class MenuUtama extends javax.swing.JFrame {
         MenuTransaksi.add(DaftarPeserta);
         MenuTransaksi.add(jSeparator1);
 
-        mn_anggota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/anggota.png"))); // NOI18N
-        mn_anggota.setText("Anggota BMT");
-        mn_anggota.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        mn_anggota.addActionListener(new java.awt.event.ActionListener() {
+        aggt_bmt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/anggota.png"))); // NOI18N
+        aggt_bmt.setText("Anggota BMT");
+        aggt_bmt.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        aggt_bmt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mn_anggotaActionPerformed(evt);
+                aggt_bmtActionPerformed(evt);
             }
         });
-        MenuTransaksi.add(mn_anggota);
+        MenuTransaksi.add(aggt_bmt);
         MenuTransaksi.add(jSeparator11);
 
         BayarIuran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Edit toolbar.png"))); // NOI18N
@@ -423,12 +420,13 @@ public class MenuUtama extends javax.swing.JFrame {
         user.setVisible(true);
     }//GEN-LAST:event_useradminActionPerformed
 
-    private void mn_anggotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_anggotaActionPerformed
+    private void aggt_bmtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggt_bmtActionPerformed
         // TODO add your handling code here:
-        Form.Internal.crud_anggota crata = new crud_anggota();
-        DesktopBackground.add(crata);
-        crata.setVisible(true);
-    }//GEN-LAST:event_mn_anggotaActionPerformed
+        crud_anggota crgt = new crud_anggota();
+        DesktopBackground.add(crgt);
+        crgt.setVisible(true);
+        
+    }//GEN-LAST:event_aggt_bmtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -471,7 +469,7 @@ public class MenuUtama extends javax.swing.JFrame {
         SwingUtilities.updateComponentTreeUI(new MenuUtama());
     } catch (Exception e){
  
-    } 
+    }
     new MenuUtama().setVisible(true);
     }
     
@@ -524,6 +522,7 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JMenuItem UbahDataADM;
     private javax.swing.JMenuItem UbahDataBMT;
     private javax.swing.JMenuItem UbahNilaiADM;
+    private javax.swing.JMenuItem aggt_bmt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
@@ -540,7 +539,6 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator9;
     private javax.swing.JLabel labelWaktu;
     private javax.swing.JMenu mLaporan;
-    private javax.swing.JMenuItem mn_anggota;
     private javax.swing.JMenuItem useradmin;
     // End of variables declaration//GEN-END:variables
 }

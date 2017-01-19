@@ -10,10 +10,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import koneksi.Koneksi;
-/**
- *
- * @author Administrator
- */
+
 public class InfoPeserta extends javax.swing.JInternalFrame {
 
     Connection conn = null;
@@ -25,7 +22,7 @@ public class InfoPeserta extends javax.swing.JInternalFrame {
      */
     public InfoPeserta() {
         initComponents();
-        this.setLocation(277, 145);
+        this.setLocation(300, 145);
         FillTable(jTable1, "SELECT * FROM data_peserta");
        
     }
@@ -69,6 +66,7 @@ public class InfoPeserta extends javax.swing.JInternalFrame {
             }
         });
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTable1.setAutoscrolls(false);
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -86,8 +84,8 @@ public class InfoPeserta extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();

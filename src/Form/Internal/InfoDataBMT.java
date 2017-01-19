@@ -1,19 +1,69 @@
 package Form.Internal;
 
-/**
- *
- * @author Administrator
- */
-public class InfoDataBMT extends javax.swing.JInternalFrame {
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import koneksi.Koneksi;
 
+
+public class InfoDataBMT extends javax.swing.JInternalFrame {
+    
+    Connection conn = null;
+    ResultSet sqlResultSet = null;
+    Statement sqlStatement = null;
+    koneksi.Koneksi konek = new Koneksi();
     /**
      * Creates new form InfoDataBMT
      */
     public InfoDataBMT() {
         initComponents();
         this.setLocation(277, 145);
+        FillTable(jTable1, "SELECT * FROM data_bmt");
     }
+    
+    public void FillTable(JTable table, String Query)
+{
+    try
+    {
+        conn = konek.bukaKoneksi();
+        Statement stat = conn.createStatement();
+        ResultSet rs = stat.executeQuery(Query);
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        //To remove previously added rows
+        while(table.getRowCount() > 0) 
+        {
+            ((DefaultTableModel) table.getModel()).removeRow(0);
+        }
+        int columns = rs.getMetaData().getColumnCount();
+        while(rs.next())
+        {  
+            Object[] row = new Object[columns];
+            for (int i = 1; i <= columns; i++)
+            {  
+                row[i - 1] = rs.getObject(i); 
+                
+            }
+            ((DefaultTableModel) table.getModel()).insertRow(rs.getRow()-1,row);
+        }
 
+        rs.close();
+        stat.close();
+        conn.close();
+    }
+    catch(SQLException e)
+    {
+        e.printStackTrace();
+    }
+}
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,13 +84,13 @@ public class InfoDataBMT extends javax.swing.JInternalFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "NIK_BMT", "NAMA_BMT", "ALAMAT_BMT", "NO_ANGGOTA", "MPD", "MPW", "NO_TELPON", "NAMA_KONTAK", "NO_KONTAK"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -60,7 +110,7 @@ public class InfoDataBMT extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 

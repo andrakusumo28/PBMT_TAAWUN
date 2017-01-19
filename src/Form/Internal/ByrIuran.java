@@ -112,6 +112,7 @@ public class ByrIuran extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("NO.KTP       :");
 
+        no_ktp.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         no_ktp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 no_ktpKeyPressed(evt);
@@ -120,6 +121,8 @@ public class ByrIuran extends javax.swing.JInternalFrame {
                 no_ktpKeyTyped(evt);
             }
         });
+
+        jTextField3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel5.setText("NAMA         :");
@@ -130,14 +133,21 @@ public class ByrIuran extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel7.setText("            JUMLAH TAGIHAN :");
 
+        jTextField4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+
         jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel8.setText("PEMBAYARAN TRANSFER :");
 
+        jTextField5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+
+        jTextField6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField6KeyTyped(evt);
             }
         });
+
+        jTextField7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
 
         jButton1.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jButton1.setText("CANCEL");
@@ -229,7 +239,7 @@ public class ByrIuran extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 32, Short.MAX_VALUE))
+                .addGap(0, 62, Short.MAX_VALUE))
         );
 
         pack();

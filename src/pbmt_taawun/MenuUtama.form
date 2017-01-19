@@ -12,9 +12,6 @@
             <LineBorder thickness="2"/>
           </Border>
         </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Dotum" size="14" style="1"/>
-        </Property>
       </Properties>
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="MenuTransaksi">
@@ -28,7 +25,6 @@
               <Image iconType="3" name="/image/connect.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Menu Transaksi"/>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="DaftarPeserta">
@@ -49,7 +45,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mn_anggota">
+            <MenuItem class="javax.swing.JMenuItem" name="aggt_bmt">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/image/anggota.png"/>
@@ -62,7 +58,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mn_anggotaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aggt_bmtActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator11">
@@ -445,9 +441,6 @@
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Gothic" size="18" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="day, date month year hh:mm:ss"/>
           </Properties>

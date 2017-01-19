@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Form.Internal;
 
 /**
@@ -16,6 +11,7 @@ public class InputAccount extends javax.swing.JInternalFrame {
      */
     public InputAccount() {
         initComponents();
+        this.setLocation(300, 145);
     }
 
     /**
@@ -33,6 +29,7 @@ public class InputAccount extends javax.swing.JInternalFrame {
 
         setBackground(new java.awt.Color(102, 102, 255));
         setClosable(true);
+        setResizable(true);
 
         jTabbedPane1.setToolTipText("");
         jTabbedPane1.setInheritsPopupMenu(true);
