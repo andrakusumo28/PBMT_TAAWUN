@@ -87,22 +87,27 @@ public class crud_anggota extends javax.swing.JInternalFrame {
 
         pnl_anggota.setBackground(new java.awt.Color(102, 102, 255));
 
+        aerithLabel1.setForeground(new java.awt.Color(0, 0, 0));
         aerithLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         aerithLabel1.setText("NO.KTP :");
         aerithLabel1.setFont(new java.awt.Font("Default", 1, 12)); // NOI18N
 
+        aerithLabel2.setForeground(new java.awt.Color(0, 0, 0));
         aerithLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         aerithLabel2.setText("NAMA :");
         aerithLabel2.setFont(new java.awt.Font("Default", 1, 12)); // NOI18N
 
+        aerithLabel14.setForeground(new java.awt.Color(0, 0, 0));
         aerithLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         aerithLabel14.setText("ALAMAT :");
         aerithLabel14.setFont(new java.awt.Font("Default", 1, 12)); // NOI18N
 
+        aerithLabel15.setForeground(new java.awt.Color(0, 0, 0));
         aerithLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         aerithLabel15.setText("TEMPAT LAHIR :");
         aerithLabel15.setFont(new java.awt.Font("Default", 1, 12)); // NOI18N
 
+        aerithLabel16.setForeground(new java.awt.Color(0, 0, 0));
         aerithLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         aerithLabel16.setText("TANGGAL LAHIR :");
         aerithLabel16.setFont(new java.awt.Font("Default", 1, 12)); // NOI18N
@@ -117,14 +122,17 @@ public class crud_anggota extends javax.swing.JInternalFrame {
         jDateChooser1.setMaxSelectableDate(null);
         jDateChooser1.setMinSelectableDate(new java.util.Date(-631173512000L));
 
+        aerithLabel17.setForeground(new java.awt.Color(0, 0, 0));
         aerithLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         aerithLabel17.setText("LOKASI USAHA :");
         aerithLabel17.setFont(new java.awt.Font("Default", 1, 12)); // NOI18N
 
+        aerithLabel18.setForeground(new java.awt.Color(0, 0, 0));
         aerithLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         aerithLabel18.setText("JENIS USAHA :");
         aerithLabel18.setFont(new java.awt.Font("Default", 1, 12)); // NOI18N
 
+        aerithLabel19.setForeground(new java.awt.Color(0, 0, 0));
         aerithLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         aerithLabel19.setText("NIK BMT :");
         aerithLabel19.setFont(new java.awt.Font("Default", 1, 12)); // NOI18N
@@ -217,22 +225,27 @@ public class crud_anggota extends javax.swing.JInternalFrame {
 
         pnl_anggota1.setBackground(new java.awt.Color(102, 102, 255));
 
+        aerithLabel3.setForeground(new java.awt.Color(0, 0, 0));
         aerithLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         aerithLabel3.setText("NO.KTP :");
         aerithLabel3.setFont(new java.awt.Font("Default", 1, 12)); // NOI18N
 
+        aerithLabel4.setForeground(new java.awt.Color(0, 0, 0));
         aerithLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         aerithLabel4.setText("NAMA :");
         aerithLabel4.setFont(new java.awt.Font("Default", 1, 12)); // NOI18N
 
+        aerithLabel20.setForeground(new java.awt.Color(0, 0, 0));
         aerithLabel20.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         aerithLabel20.setText("ALAMAT :");
         aerithLabel20.setFont(new java.awt.Font("Default", 1, 12)); // NOI18N
 
+        aerithLabel21.setForeground(new java.awt.Color(0, 0, 0));
         aerithLabel21.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         aerithLabel21.setText("TEMPAT LAHIR :");
         aerithLabel21.setFont(new java.awt.Font("Default", 1, 12)); // NOI18N
 
+        aerithLabel22.setForeground(new java.awt.Color(0, 0, 0));
         aerithLabel22.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         aerithLabel22.setText("TANGGAL LAHIR :");
         aerithLabel22.setFont(new java.awt.Font("Default", 1, 12)); // NOI18N
@@ -247,14 +260,17 @@ public class crud_anggota extends javax.swing.JInternalFrame {
         jDateChooser2.setMaxSelectableDate(null);
         jDateChooser2.setMinSelectableDate(new java.util.Date(-631173512000L));
 
+        aerithLabel23.setForeground(new java.awt.Color(0, 0, 0));
         aerithLabel23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         aerithLabel23.setText("LOKASI USAHA :");
         aerithLabel23.setFont(new java.awt.Font("Default", 1, 12)); // NOI18N
 
+        aerithLabel24.setForeground(new java.awt.Color(0, 0, 0));
         aerithLabel24.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         aerithLabel24.setText("JENIS USAHA :");
         aerithLabel24.setFont(new java.awt.Font("Default", 1, 12)); // NOI18N
 
+        aerithLabel25.setForeground(new java.awt.Color(0, 0, 0));
         aerithLabel25.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         aerithLabel25.setText("NIK BMT :");
         aerithLabel25.setFont(new java.awt.Font("Default", 1, 12)); // NOI18N

@@ -11,34 +11,18 @@ import javax.swing.UIManager;
  * @author Administrator
  */
 public class FormLogin extends javax.swing.JFrame {
-    
-    /**
-     *
-     */
+
+
     public Connection conn;
-
-    /**
-     *
-     */
     public ResultSet Rs;
-
-    /**
-     *
-     */
     public Statement cn;
-    
-    /**
-     * Creates new form FormLogin
-     */
+
     public FormLogin() {
         initComponents();
         this.setLocationRelativeTo(this);
         //this.setExtendedState(MAXIMIZED_BOTH);
     }
-     
-    /**
-     *
-     */
+    
     public void koneksi() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -49,7 +33,7 @@ public class FormLogin extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }
-    
+
     /**
      *
      */
@@ -77,6 +61,7 @@ public class FormLogin extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,12 +72,13 @@ public class FormLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         jFrame1 = new javax.swing.JFrame();
+        backgroundLogin1 = new image.BackgroundLogin();
+        jLabel1 = new javax.swing.JLabel();
+        txtuser = new javax.swing.JTextField();
+        txtpass = new javax.swing.JPasswordField();
+        jLabel2 = new javax.swing.JLabel();
         LoginBtn = new aerith.swing.AerithActionButton();
         CancelBtn = new aerith.swing.AerithActionButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtpass = new javax.swing.JPasswordField();
-        txtuser = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -107,6 +93,22 @@ public class FormLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel1.setText("USERNAME         :");
+
+        txtuser.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
+        txtuser.setForeground(new java.awt.Color(255, 255, 255));
+
+        txtpass.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        txtpass.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel2.setText("PASSWORD        :");
 
         LoginBtn.setText("LOGIN");
         LoginBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -124,46 +126,52 @@ public class FormLogin extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("USERNAME         :");
-
-        jLabel2.setText("PASSWORD        :");
+        javax.swing.GroupLayout backgroundLogin1Layout = new javax.swing.GroupLayout(backgroundLogin1);
+        backgroundLogin1.setLayout(backgroundLogin1Layout);
+        backgroundLogin1Layout.setHorizontalGroup(
+            backgroundLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLogin1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(backgroundLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(backgroundLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtpass, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, backgroundLogin1Layout.createSequentialGroup()
+                        .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(CancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtuser))
+                .addContainerGap(283, Short.MAX_VALUE))
+        );
+        backgroundLogin1Layout.setVerticalGroup(
+            backgroundLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLogin1Layout.createSequentialGroup()
+                .addContainerGap(190, Short.MAX_VALUE)
+                .addGroup(backgroundLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(backgroundLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(backgroundLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(120, 120, 120))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtpass)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(CancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(txtuser))
-                .addContainerGap())
+            .addComponent(backgroundLogin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
+            .addComponent(backgroundLogin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -177,10 +185,9 @@ public class FormLogin extends javax.swing.JFrame {
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
         // TODO add your handling code here:
         pbmt_taawun.MenuUtama mnu = new MenuUtama();
-        mnu.setVisible(true);     
+        mnu.setVisible(true);
     }//GEN-LAST:event_LoginBtnActionPerformed
 
-    
     /**
      * @param args the command line arguments
      */
@@ -215,17 +222,16 @@ public class FormLogin extends javax.swing.JFrame {
 //            }
 //        });
 //    }
-    
-    public static void main (String args []){
-    try {
-        UIManager.setLookAndFeel("com.jtattoo.plaf.alumunium.AlumuniumLookAndFeel");
-        SwingUtilities.updateComponentTreeUI(new FormLogin());
-    } catch (Exception e){
- 
+    public static void main(String args[]) {
+        try {
+            UIManager.setLookAndFeel("com.jtattoo.plaf.alumunium.AlumuniumLookAndFeel");
+            SwingUtilities.updateComponentTreeUI(new FormLogin());
+        } catch (Exception e) {
+
+        }
+        new FormLogin().setVisible(true);
     }
-    new FormLogin().setVisible(true);
-    }
-    
+
     void closeapps() {
         int i = JOptionPane.showConfirmDialog(null, "Anda Yakin Ingin Batal Login?", "Konfirmasi",
                 JOptionPane.YES_NO_OPTION);
@@ -237,6 +243,7 @@ public class FormLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private aerith.swing.AerithActionButton CancelBtn;
     private aerith.swing.AerithActionButton LoginBtn;
+    private image.BackgroundLogin backgroundLogin1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
