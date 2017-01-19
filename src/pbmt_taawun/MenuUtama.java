@@ -402,9 +402,9 @@ public class MenuUtama extends javax.swing.JFrame {
 
     private void useradminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useradminActionPerformed
         // TODO add your handling code here:
-        UserAdmin user = new UserAdmin();
-        DesktopBackground.add(user);
-        user.setVisible(true);
+//        UserAdmin user = new UserAdmin();
+//        DesktopBackground.add(user);
+//        user.setVisible(true);
     }//GEN-LAST:event_useradminActionPerformed
 
     /**
