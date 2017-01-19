@@ -6,9 +6,16 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+/**
+ *
+ * @author Administrator
+ */
 public class BackgroundLogin extends JPanel{
     private Image image;
     
+    /**
+     *
+     */
     public BackgroundLogin() {
         image = new ImageIcon(getClass().getResource("/image/pbmt03.jpg")).getImage();
     }

@@ -8,11 +8,18 @@ import java.awt.geom.RoundRectangle2D;
 import java.awt.geom.RoundRectangle2D.Double;
 import javax.swing.JPanel;
 
+/**
+ *
+ * @author Administrator
+ */
 public class FTransparan extends JPanel{
     private Color col;
     private GradientPaint paint;
     private Double shape;
 
+    /**
+     *
+     */
     public FTransparan() {
         setOpaque(false);
         col=new Color(getBackground().getRed(),getBackground().getGreen(),getBackground().getBlue(),80);

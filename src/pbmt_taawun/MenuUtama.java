@@ -18,6 +18,10 @@ import java.text.SimpleDateFormat;
 import javax.swing.Timer;
 import javax.swing.*;
 
+/**
+ *
+ * @author Administrator
+ */
 public class MenuUtama extends javax.swing.JFrame {
     
     /**
@@ -32,7 +36,11 @@ public class MenuUtama extends javax.swing.JFrame {
     }
 
     //logo aplikasi
-    public void icon() {
+
+    /**
+     *
+     */
+        public void icon() {
         ImageIcon ico = new ImageIcon("src/image/pc.png");
         setIconImage(ico.getImage());
     }
@@ -476,6 +484,10 @@ public class MenuUtama extends javax.swing.JFrame {
     
 //fungsi label waktu
 
+    /**
+     *
+     */
+    
     public void CurrentDate() {
         ActionListener action = new ActionListener() {
             public void actionPerformed(ActionEvent a) {

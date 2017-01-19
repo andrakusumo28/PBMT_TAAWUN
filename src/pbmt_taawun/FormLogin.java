@@ -12,8 +12,19 @@ import javax.swing.UIManager;
  */
 public class FormLogin extends javax.swing.JFrame {
     
+    /**
+     *
+     */
     public Connection conn;
+
+    /**
+     *
+     */
     public ResultSet Rs;
+
+    /**
+     *
+     */
     public Statement cn;
     
     /**
@@ -25,6 +36,9 @@ public class FormLogin extends javax.swing.JFrame {
         //this.setExtendedState(MAXIMIZED_BOTH);
     }
      
+    /**
+     *
+     */
     public void koneksi() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -36,6 +50,9 @@ public class FormLogin extends javax.swing.JFrame {
         }
     }
     
+    /**
+     *
+     */
     public void cariuser() {
         try {
             koneksi();

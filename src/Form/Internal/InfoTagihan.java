@@ -12,6 +12,10 @@ import javax.swing.table.DefaultTableModel;
 import koneksi.Koneksi;
 //import net.proteanit.sql.DbUtils;
 
+/**
+ *
+ * @author Administrator
+ */
 public final class InfoTagihan extends javax.swing.JInternalFrame {
 
     /**
@@ -23,12 +27,36 @@ public final class InfoTagihan extends javax.swing.JInternalFrame {
         tampiltabel();
     }
     Koneksi koneksi;
+
+    /**
+     *
+     */
     public Connection conn;
+
+    /**
+     *
+     */
     public ResultSet  rs;
+
+    /**
+     *
+     */
     public ResultSet  rs1;
+
+    /**
+     *
+     */
     public Statement  stmt;
+
+    /**
+     *
+     */
     public Statement  stmt1;
 
+    /**
+     *
+     * @throws SQLException
+     */
     public void conn() throws SQLException {
         try {
             conn=null;
@@ -45,7 +73,9 @@ public final class InfoTagihan extends javax.swing.JInternalFrame {
 
     }
 
-   
+    /**
+     *
+     */
     public void tampiltabel() {
         DefaultTableModel tbltagihan = new DefaultTableModel();
         //tbltagihan.addColumn("KODE MAPEL");

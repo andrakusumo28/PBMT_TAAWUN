@@ -32,6 +32,10 @@ public class DftrPeserta extends javax.swing.JInternalFrame {
     koneksi.Koneksi konek = new Koneksi();
     private static final DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     Date date = new Date();
+
+    /**
+     *
+     */
     public DftrPeserta() {
         initComponents();
         this.setLocation(300, 145);

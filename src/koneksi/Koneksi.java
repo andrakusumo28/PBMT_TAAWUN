@@ -5,6 +5,10 @@ import java.util.Properties;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author Administrator
+ */
 public class Koneksi {
     
 //    public static Connection con;
@@ -55,6 +59,12 @@ public class Koneksi {
 //        return con;
 //    }
     
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
+        
     public  Connection bukaKoneksi()throws SQLException{
 
         Connection connect;

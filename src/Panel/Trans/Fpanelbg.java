@@ -5,9 +5,16 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+/**
+ *
+ * @author Administrator
+ */
 public class Fpanelbg extends JPanel {
     private Image gam;
 
+    /**
+     *
+     */
     public Fpanelbg() {
         setOpaque(true);
         gam=new ImageIcon(getClass().getResource("/panelbgtransparan/mus.jpg")).getImage();

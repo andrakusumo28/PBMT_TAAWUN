@@ -8,8 +8,10 @@ import java.awt.*;
 import java.awt.event.*; 
 import javax.swing.*;
 
-
-
+/**
+ *
+ * @author Administrator
+ */
 public class UserAdmin extends javax.swing.JInternalFrame implements
                            java.awt.event.KeyListener                         {
     
@@ -19,7 +21,9 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
     private java.sql.ResultSet rs;
     private java.sql.PreparedStatement ps;
 
-        
+    /**
+     *
+     */
     public UserAdmin() {
         initComponents();
         //setLocationRelativeTo(this); 
@@ -29,11 +33,17 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
         txtPassLama.requestFocusInWindow();
     }
     
+    /**
+     *
+     */
     public void kupingTombol(){
         txtPassBaru.addKeyListener(this);
         txtKonfirmPass.addKeyListener(this);
     }
 
+    /**
+     *
+     */
     public void koneksi() {
         try {
             Class.forName("com.mysql.jdbc.Driver");

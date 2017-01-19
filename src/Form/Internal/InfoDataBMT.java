@@ -11,7 +11,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import koneksi.Koneksi;
 
-
+/**
+ *
+ * @author Administrator
+ */
 public class InfoDataBMT extends javax.swing.JInternalFrame {
     
     Connection conn = null;
@@ -27,6 +30,11 @@ public class InfoDataBMT extends javax.swing.JInternalFrame {
         FillTable(jTable1, "SELECT * FROM data_bmt");
     }
     
+    /**
+     *
+     * @param table
+     * @param Query
+     */
     public void FillTable(JTable table, String Query)
 {
     try

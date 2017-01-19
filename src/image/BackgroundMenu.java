@@ -6,9 +6,16 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 
+/**
+ *
+ * @author Administrator
+ */
 public class BackgroundMenu extends JDesktopPane{
     private Image image;
     
+    /**
+     *
+     */
     public BackgroundMenu() {
         image = new ImageIcon(getClass().getResource("/image/pbmt04.jpg")).getImage();
     }

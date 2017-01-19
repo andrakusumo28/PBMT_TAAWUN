@@ -11,6 +11,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import koneksi.Koneksi;
 
+/**
+ *
+ * @author Administrator
+ */
 public class InfoPeserta extends javax.swing.JInternalFrame {
 
     Connection conn = null;
@@ -98,6 +102,11 @@ public class InfoPeserta extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @param table
+     * @param Query
+     */
     public void FillTable(JTable table, String Query)
 {
     try

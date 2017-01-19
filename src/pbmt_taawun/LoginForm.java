@@ -3,18 +3,39 @@ package pbmt_taawun;
 import java.sql.*;
 import javax.swing.*;
 
+/**
+ *
+ * @author Administrator
+ */
 public class LoginForm extends javax.swing.JFrame {
 
+    /**
+     *
+     */
     public Connection conn;
+
+    /**
+     *
+     */
     public ResultSet Rs;
+
+    /**
+     *
+     */
     public Statement cn;
 
+    /**
+     *
+     */
     public LoginForm() {
         initComponents();
         setLocationRelativeTo(this);
         icon();
     }
 
+    /**
+     *
+     */
     public void koneksi() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -27,11 +48,18 @@ public class LoginForm extends javax.swing.JFrame {
     }
 
     //logo
-    public void icon() {
+
+    /**
+     *
+     */
+        public void icon() {
         ImageIcon ico = new ImageIcon("src/images/logomenu.jpg");
         setIconImage(ico.getImage());
     }
 
+    /**
+     *
+     */
     public void cariuser() {
         try {
             koneksi();

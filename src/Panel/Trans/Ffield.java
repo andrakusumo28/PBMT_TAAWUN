@@ -19,6 +19,9 @@ public class Ffield extends JTextField {
     private GradientPaint paint;
     private Double shape;
 
+    /**
+     *
+     */
     public Ffield() {
         setOpaque(false);
         col=new Color(getBackground().getRed(),getBackground().getGreen(),getBackground().getBlue(),80);

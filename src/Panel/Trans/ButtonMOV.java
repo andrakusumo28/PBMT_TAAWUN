@@ -11,6 +11,10 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.JButton;
 
+/**
+ *
+ * @author Administrator
+ */
 public class ButtonMOV extends JButton {
     private boolean over;
     private boolean tekan;
@@ -21,6 +25,9 @@ public class ButtonMOV extends JButton {
     private Paint glass;
     private Paint glass2;
 
+    /**
+     *
+     */
     public ButtonMOV() {
 setOpaque(false);
         setFocusPainted(false);
@@ -52,19 +59,35 @@ setOpaque(false);
 
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isOver() {
         return over;
     }
 
+    /**
+     *
+     * @param over
+     */
     public void setOver(boolean over) {
 	 this.over = over;
 	 repaint();
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isTekan() {
 	 return tekan;
     }
 
+    /**
+     *
+     * @param tekan
+     */
     public void setTekan(boolean tekan) {
 	 this.tekan = tekan;
 	 repaint();
@@ -108,6 +131,10 @@ setOpaque(false);
         gr.dispose();
     }
 
+    /**
+     *
+     * @param string
+     */
     public void setIcon(String string) {
         throw new UnsupportedOperationException("Not yet implemented");
     }

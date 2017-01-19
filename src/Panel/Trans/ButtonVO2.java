@@ -20,6 +20,9 @@ import javax.swing.JButton;
 public class ButtonVO2 extends JButton {
     private Icon iconEnter, iconExit, iconPress;   
 
+    /**
+     *
+     */
     public ButtonVO2() {
         iconEnter = null;
         iconExit = null;        
@@ -62,15 +65,27 @@ public class ButtonVO2 extends JButton {
         });
     }
 
+    /**
+     *
+     * @param iconEnter
+     */
     public void setIconEnter(Icon iconEnter){
         this.iconEnter = iconEnter;
     }
 
+    /**
+     *
+     * @param iconExit
+     */
     public void setIconExit(Icon iconExit){
         this.iconExit = iconExit;
     }
 
-     public void setIconPress(Icon iconPress) {
+    /**
+     *
+     * @param iconPress
+     */
+    public void setIconPress(Icon iconPress) {
         this.iconPress = iconPress;
     }
 }

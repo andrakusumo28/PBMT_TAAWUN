@@ -8,11 +8,18 @@ import java.awt.geom.RoundRectangle2D;
 import java.awt.geom.RoundRectangle2D.Double;
 import javax.swing.JTabbedPane;
 
+/**
+ *
+ * @author Administrator
+ */
 public class FTab extends JTabbedPane {
      private Color col;
     private GradientPaint paint;
     private Double shape;
 
+    /**
+     *
+     */
     public FTab() {
         setOpaque(false);
         col=new Color(getBackground().getRed(),getBackground().getGreen(),getBackground().getBlue(),80);
