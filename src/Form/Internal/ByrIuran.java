@@ -7,6 +7,7 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.event.KeyEvent;
 import java.beans.PropertyVetoException;
 import java.sql.*;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 //import java.util.logging.Level;
@@ -24,6 +25,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import koneksi.Koneksi;
 //import javax.swing.table.TableColumnModel;
 import net.proteanit.sql.DbUtils;
 
@@ -33,6 +35,14 @@ import net.proteanit.sql.DbUtils;
  */
 public class ByrIuran extends javax.swing.JInternalFrame {
 
+    Connection conn = null;
+    ResultSet sqlResultSet = null;
+    ResultSet sqlResultSet1 = null;
+    Statement sqlStatement = null;
+    Statement sqlStatement1 = null;
+    koneksi.Koneksi konek = new Koneksi();
+    private static final DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    java.util.Date date = new java.util.Date();
     /**
      * Creates new form ByrIuran
      */
@@ -68,7 +78,7 @@ public class ByrIuran extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        no_ktp = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -102,9 +112,14 @@ public class ByrIuran extends javax.swing.JInternalFrame {
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("NO.KTP       :");
 
-        jTextField1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        jTextField3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        no_ktp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                no_ktpKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                no_ktpKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel5.setText("NAMA         :");
@@ -115,16 +130,14 @@ public class ByrIuran extends javax.swing.JInternalFrame {
         jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel7.setText("            JUMLAH TAGIHAN :");
 
-        jTextField4.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
         jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel8.setText("PEMBAYARAN TRANSFER :");
 
-        jTextField5.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        jTextField6.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-
-        jTextField7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField6KeyTyped(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         jButton1.setText("CANCEL");
@@ -150,7 +163,7 @@ public class ByrIuran extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                        .addComponent(no_ktp, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
                         .addComponent(jTextField3)
                         .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -176,7 +189,7 @@ public class ByrIuran extends javax.swing.JInternalFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(no_ktp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -216,11 +229,65 @@ public class ByrIuran extends javax.swing.JInternalFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 62, Short.MAX_VALUE))
+                .addGap(0, 32, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyTyped
+        // TODO add your handling code here:
+         boolean cond=true;String i = "";
+	while(cond){
+
+	 
+            i=String.valueOf(evt.getKeyChar());
+            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();;
+            cond=false;
+        }
+    }//GEN-LAST:event_jTextField6KeyTyped
+
+    private void no_ktpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_no_ktpKeyTyped
+        // TODO add your handling code here:
+         boolean cond=true;String i = "";
+	while(cond){
+
+	 
+            i=String.valueOf(evt.getKeyChar());
+            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();;
+            cond=false;
+        }
+    }//GEN-LAST:event_no_ktpKeyTyped
+
+    private void no_ktpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_no_ktpKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            try {
+
+            conn = konek.bukaKoneksi();
+            sqlStatement = conn.createStatement();
+            sqlStatement1 = conn.createStatement();
+    //        conn.commit();
+
+            String ktp = no_ktp.getText().trim();
+            StringBuffer buff = new StringBuffer();
+            buff.append("SELECT * FROM data_peserta WHERE NO_KTP ='").append(ktp).append("'");
+            sqlResultSet = sqlStatement.executeQuery(buff.toString());
+            if(sqlResultSet.next()){
+
+                no_ktp.setText(sqlResultSet.getString(1).toString()); 
+                
+
+            }else{
+
+//                nama.isFocusable();
+            }
+            } catch (Exception es) {
+                JOptionPane.showMessageDialog(null, es.getMessage(), "Information", JOptionPane.ERROR);
+                es.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_no_ktpKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -236,12 +303,12 @@ public class ByrIuran extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField no_ktp;
     // End of variables declaration//GEN-END:variables
 
 }

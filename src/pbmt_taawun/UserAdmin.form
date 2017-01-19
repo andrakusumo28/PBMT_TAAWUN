@@ -70,7 +70,7 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="0" type="rgb"/>
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="  USERNAME    :"/>
@@ -184,27 +184,22 @@
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="txtKonfirmPass" pref="253" max="32767" attributes="0"/>
-                              <Component id="txtPassLama" alignment="0" pref="253" max="32767" attributes="0"/>
-                              <Component id="txtPassBaru" alignment="0" pref="253" max="32767" attributes="0"/>
+                              <Component id="txtKonfirmPass" max="32767" attributes="0"/>
+                              <Component id="txtPassLama" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtPassBaru" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="15" pref="15" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel11" max="32767" attributes="0"/>
-                                      <Component id="jLabel12" alignment="1" max="32767" attributes="1"/>
-                                  </Group>
-                              </Group>
-                              <Component id="jLabel13" max="32767" attributes="1"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="jLabel12" max="32767" attributes="1"/>
+                              <Component id="jLabel13" pref="114" max="32767" attributes="1"/>
+                              <Component id="jLabel11" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtPassBaru1" alignment="1" pref="237" max="32767" attributes="0"/>
-                              <Component id="txtPassLama1" alignment="1" max="32767" attributes="0"/>
-                              <Component id="txtKonfirmPass1" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="nama" alignment="1" max="32767" attributes="0"/>
+                              <Component id="role" max="32767" attributes="0"/>
+                              <Component id="nomor" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -218,17 +213,17 @@
                   <EmptySpace pref="25" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtPassLama1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nomor" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtPassBaru1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nama" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtKonfirmPass1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="role" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -303,13 +298,6 @@
             <Property name="text" type="java.lang.String" value="NOMOR :"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="txtPassLama1">
-          <Properties>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Text Cursor"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -318,8 +306,6 @@
             <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="text" type="java.lang.String" value="NAMA :"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JPasswordField" name="txtPassBaru1">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
           <Properties>
@@ -330,7 +316,11 @@
             <Property name="text" type="java.lang.String" value="KEWENANGAN :"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="txtKonfirmPass1">
+        <Component class="javax.swing.JTextField" name="nomor">
+        </Component>
+        <Component class="javax.swing.JTextField" name="nama">
+        </Component>
+        <Component class="javax.swing.JTextField" name="role">
         </Component>
       </SubComponents>
     </Container>

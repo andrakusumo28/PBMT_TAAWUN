@@ -8,6 +8,7 @@ import Form.Internal.InfoTagihan;
 import Form.Internal.InputAccount;
 import Form.Internal.InputDataBMT;
 import Form.Internal.UbahDataBMT;
+import Form.Internal.crud_anggota;
 import java.util.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -53,6 +54,8 @@ public class MenuUtama extends javax.swing.JFrame {
         MenuTransaksi = new javax.swing.JMenu();
         DaftarPeserta = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        mn_anggota = new javax.swing.JMenuItem();
+        jSeparator11 = new javax.swing.JPopupMenu.Separator();
         BayarIuran = new javax.swing.JMenuItem();
         MenuInformasi = new javax.swing.JMenu();
         InfoPeserta = new javax.swing.JMenuItem();
@@ -121,10 +124,12 @@ public class MenuUtama extends javax.swing.JFrame {
 
         jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
         jMenuBar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jMenuBar1.setFont(new java.awt.Font("Dotum", 1, 14)); // NOI18N
 
         MenuTransaksi.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         MenuTransaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/connect.png"))); // NOI18N
         MenuTransaksi.setText("Menu Transaksi");
+        MenuTransaksi.setToolTipText("");
 
         DaftarPeserta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/medium 130.png"))); // NOI18N
         DaftarPeserta.setText("Pendaftaran Peserta");
@@ -136,6 +141,17 @@ public class MenuUtama extends javax.swing.JFrame {
         });
         MenuTransaksi.add(DaftarPeserta);
         MenuTransaksi.add(jSeparator1);
+
+        mn_anggota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/anggota.png"))); // NOI18N
+        mn_anggota.setText("Anggota BMT");
+        mn_anggota.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        mn_anggota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mn_anggotaActionPerformed(evt);
+            }
+        });
+        MenuTransaksi.add(mn_anggota);
+        MenuTransaksi.add(jSeparator11);
 
         BayarIuran.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Edit toolbar.png"))); // NOI18N
         BayarIuran.setText("Pembayaran Iuran");
@@ -407,6 +423,13 @@ public class MenuUtama extends javax.swing.JFrame {
         user.setVisible(true);
     }//GEN-LAST:event_useradminActionPerformed
 
+    private void mn_anggotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mn_anggotaActionPerformed
+        // TODO add your handling code here:
+        Form.Internal.crud_anggota crata = new crud_anggota();
+        DesktopBackground.add(crata);
+        crata.setVisible(true);
+    }//GEN-LAST:event_mn_anggotaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -448,7 +471,7 @@ public class MenuUtama extends javax.swing.JFrame {
         SwingUtilities.updateComponentTreeUI(new MenuUtama());
     } catch (Exception e){
  
-    }
+    } 
     new MenuUtama().setVisible(true);
     }
     
@@ -506,6 +529,7 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator10;
+    private javax.swing.JPopupMenu.Separator jSeparator11;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
@@ -516,6 +540,7 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator9;
     private javax.swing.JLabel labelWaktu;
     private javax.swing.JMenu mLaporan;
+    private javax.swing.JMenuItem mn_anggota;
     private javax.swing.JMenuItem useradmin;
     // End of variables declaration//GEN-END:variables
 }
