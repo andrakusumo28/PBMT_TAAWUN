@@ -9,12 +9,12 @@ package Form.Internal;
  *
  * @author Administrator
  */
-public class UbahNilaiADM extends javax.swing.JInternalFrame {
+public class crud_adm extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form UbahNilaiADM
+     * Creates new form crud_adm
      */
-    public UbahNilaiADM() {
+    public crud_adm() {
         initComponents();
     }
 

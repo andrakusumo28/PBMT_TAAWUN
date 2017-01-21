@@ -1,20 +1,17 @@
 package pbmt_taawun;
 
 import javax.swing.JOptionPane;
-import koneksi.Koneksi; 
-import java.sql.*; 
+import koneksi.Koneksi;
+import java.sql.*;
 import java.awt.event.KeyEvent;
-import java.awt.*;
-import java.awt.event.*; 
-import javax.swing.*;
 
 /**
  *
  * @author Administrator
  */
 public class UserAdmin extends javax.swing.JInternalFrame implements
-                           java.awt.event.KeyListener                         {
-    
+        java.awt.event.KeyListener {
+
     Koneksi koneksi;
     private java.sql.Connection con;
     private java.sql.Statement stmt;
@@ -27,109 +24,103 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
     public UserAdmin() {
         initComponents();
         //setLocationRelativeTo(this); 
-        
-        bersih(); 
+
+        bersih();
         kupingTombol();
         txtPassLama.requestFocusInWindow();
     }
-    
-    /**
-     *
-     */
-    public void kupingTombol(){
+
+    public void kupingTombol() {
         txtPassBaru.addKeyListener(this);
         txtKonfirmPass.addKeyListener(this);
     }
 
-    /**
-     *
-     */
     public void koneksi() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pbmt_taawun","root","");
-            stmt = con.createStatement();       
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(this,"Koneksi Gagal!","Error",JOptionPane.ERROR_MESSAGE);
-        System.out.println(e.getMessage());
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pbmt_taawun", "root", "");
+            stmt = con.createStatement();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Koneksi Gagal!", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e.getMessage());
         }
     }
-    
-    private void user(){
-        try{
+
+    private void user() {
+        try {
             koneksi();
-            String sql = "select kewenangan from user where kewenangan='admin'";
+            String sql = "select kewenangan from user";
             rs = con.createStatement().executeQuery(sql);
-            if(rs.next()) {
+            if (rs.next()) {
                 txtUser.setText(rs.getString(1));
             }
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-     private void bersih() {
+
+    private void bersih() {
         user();
         txtPassLama.setText("");
         txtPassBaru.setText("");
         txtKonfirmPass.setText("");
-        txtPassLama.requestFocus();
+        txtnama.setText("");
+        txtnomor.setText("");
+        txtrole.setText("");
+        //txtPassLama.requestFocus();
     }
 
     private void ubah() {
-        
+
         //validasi 
-         if (txtPassLama.getText().isEmpty()) {
+        if (txtPassLama.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "<html><font color='RED'><b>Password Lama Wajib Diisi</b></font></html>",
-                                            "Kesalahan", JOptionPane.ERROR_MESSAGE);
+                    "Kesalahan", JOptionPane.ERROR_MESSAGE);
             txtPassLama.requestFocus();
             return;
         }
-        
-         if (txtPassBaru.getText().isEmpty()) {
+
+        if (txtPassBaru.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "<html><font color='RED'><b>Password Baru Wajib Diisi</b></font></html>",
-                                            "Kesalahan", JOptionPane.ERROR_MESSAGE);
+                    "Kesalahan", JOptionPane.ERROR_MESSAGE);
             txtPassBaru.requestFocus();
             return;
         }
-         
-         if (txtKonfirmPass.getText().isEmpty()) {
+
+        if (txtKonfirmPass.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "<html><font color='RED'><b>Konfirmasi Password Baru Wajib Diisi</b</font></html>",
-                                            "Kesalahan", JOptionPane.ERROR_MESSAGE);
+                    "Kesalahan", JOptionPane.ERROR_MESSAGE);
             txtKonfirmPass.requestFocus();
             return;
         }
-         
-        if  (txtPassLama.getText().length() < 5 || txtPassLama.getText().length()>10){
+
+        if (txtPassLama.getText().length() < 5 || txtPassLama.getText().length() > 10) {
             JOptionPane.showMessageDialog(null, "<html><font color='RED'><b>Minimal 5 Karakter & Maksimal 10 karakter</font></b></html>",
-                                            "Kesalahan", JOptionPane.ERROR_MESSAGE);
+                    "Kesalahan", JOptionPane.ERROR_MESSAGE);
             txtPassLama.selectAll();
             txtPassLama.requestFocus();
             return;
         }
-        
-        if  (txtPassBaru.getText().length() < 5 || txtPassBaru.getText().length()>10){
+
+        if (txtPassBaru.getText().length() < 5 || txtPassBaru.getText().length() > 10) {
             JOptionPane.showMessageDialog(null, "<html><font color='RED'><b>Minimal 5 Karakter & Maksimal 10 karakter</font></b></html>",
-                                            "Kesalahan", JOptionPane.ERROR_MESSAGE);
+                    "Kesalahan", JOptionPane.ERROR_MESSAGE);
             txtPassBaru.selectAll();
             txtPassBaru.requestFocus();
             return;
         }
 
-
-
-        if  (txtKonfirmPass.getText().length() < 5 || txtKonfirmPass.getText().length()>10){
+        if (txtKonfirmPass.getText().length() < 5 || txtKonfirmPass.getText().length() > 10) {
             JOptionPane.showMessageDialog(null, "<html><font color='RED'><b>Minimal 5 Karakter & Maksimal 10 karakter</font>/<b></html>",
-                                            "Kesalahan", JOptionPane.ERROR_MESSAGE);
+                    "Kesalahan", JOptionPane.ERROR_MESSAGE);
             txtKonfirmPass.selectAll();
             txtKonfirmPass.requestFocus();
             return;
-        }
-         else{
-                try {
-                String oldPass="";
+        } else {
+            try {
+                String oldPass = "";
                 koneksi();
-                String sql = "select passlama from user where kewenangan='admin'";
+                String sql = "select kewenangan from user";
                 rs = stmt.executeQuery(sql);
                 if (rs.next()) {
                     oldPass = rs.getString(1);
@@ -138,39 +129,43 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
                             int reply = javax.swing.JOptionPane.showConfirmDialog(null, "Yakin Akan Diubah?",
                                     "Konfirmasi", javax.swing.JOptionPane.YES_NO_OPTION);
                             if (reply == javax.swing.JOptionPane.YES_OPTION) {
-                                String ubahPass = "update admin set username=?, passlama=?, passbaru=?, konfirmpass=? where username='admin'";
+                                String ubahPass = "update user set nomor=?, nama=?, password=?, passlama=?, konfirmpass=? kewenangan=? keterangan=? where kewenangan=''";
                                 ps = con.prepareStatement(ubahPass);
-                                ps.setString(1, txtUser.getText());
-                                ps.setString(2, txtPassLama.getText());
-                                ps.setString(3, txtPassBaru.getText());
-                                ps.setString(4, txtKonfirmPass.getText());
+                                //ps.setString(1, txtUser.getText());
+                                ps.setString(1, txtPassLama.getText());
+                                ps.setString(2, txtPassBaru.getText());
+                                ps.setString(3, txtKonfirmPass.getText());
+                                ps.setString(4, txtnama.getText());
+                                ps.setString(5, txtnomor.getText());
+                                ps.setString(6, txtrole.getText());
+                                ps.setString(7, txtnotes.getText());
                                 if (ps.executeUpdate() > 0) {
                                     JOptionPane.showMessageDialog(null, "Password Berhasil Diubah",
-                                                                    "Informasi", JOptionPane.INFORMATION_MESSAGE);
+                                            "Informasi", JOptionPane.INFORMATION_MESSAGE);
                                     bersih();
                                 }
                             }
                         } else {
                             JOptionPane.showMessageDialog(null, "<html><font color='RED'>Password Tidak Sesuai</font></html>",
-                                                "Kesalahan", JOptionPane.ERROR_MESSAGE);
+                                    "Kesalahan", JOptionPane.ERROR_MESSAGE);
                             txtPassBaru.setText("");
                             txtKonfirmPass.setText("");
                         }
                     } else {
                         JOptionPane.showMessageDialog(null, "<html><font color='RED'>Password Tidak Sesuai</font></html>",
-                                                "Kesalahan", JOptionPane.ERROR_MESSAGE);
+                                "Kesalahan", JOptionPane.ERROR_MESSAGE);
                         txtPassLama.setText("");
                         txtPassBaru.setText("");
                         txtKonfirmPass.setText("");
-                        } 
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -191,9 +186,11 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtnomor = new javax.swing.JTextField();
+        txtnama = new javax.swing.JTextField();
+        txtrole = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtnotes = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -240,7 +237,7 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
                 .addContainerGap()
                 .addComponent(btSimpan)
                 .addGap(60, 60, 60)
-                .addComponent(btBersih, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                .addComponent(btBersih, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -279,6 +276,9 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel13.setText("KEWENANGAN :");
 
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel7.setText("KETERANGAN :");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -292,38 +292,42 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
                             .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(txtnama, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtnomor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel7))
                             .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtPassBaru, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
                                 .addComponent(txtPassLama, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(txtKonfirmPass))
-                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtrole, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtnotes, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtnomor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtnama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtrole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -336,7 +340,11 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtKonfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtnotes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 255));
@@ -394,12 +402,12 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+                .addGap(21, 21, 21))
         );
 
-        setBounds(500, 90, 447, 511);
+        setBounds(500, 90, 447, 546);
     }// </editor-fold>//GEN-END:initComponents
-   
+
     private void btSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSimpanActionPerformed
         // TODO add your handling code here:
         ubah();
@@ -413,14 +421,14 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
 
         // TODO add your handling code here:}//GEN-LAST:event_txtUserActionPerformed
-
     }
-/**
+
+    /**
      * @param args the command line arguments
      */
-        
+
     public static void main(String args[]) {
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             //@Override
@@ -441,44 +449,43 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JPasswordField txtKonfirmPass;
     private javax.swing.JPasswordField txtPassBaru;
     private javax.swing.JPasswordField txtPassLama;
     private javax.swing.JTextField txtUser;
+    private javax.swing.JTextField txtnama;
+    private javax.swing.JTextField txtnomor;
+    private javax.swing.JTextField txtnotes;
+    private javax.swing.JTextField txtrole;
     // End of variables declaration//GEN-END:variables
 
-
-
     @Override
-public void keyTyped(KeyEvent e) {
-       /*
+    public void keyTyped(KeyEvent e) {
+        /*
          * validasi hanya inputan angka pada textfield
          */
-        if (e.getSource()==txtPassBaru) 
-        {
-            char c = e.getKeyChar ();
-            if (!((Character.isDigit (c) || (c == KeyEvent.VK_BACK_SPACE)))) {
-                getToolkit().beep (); e.consume ();
+        if (e.getSource() == txtPassBaru) {
+            char c = e.getKeyChar();
+            if (!((Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE)))) {
+                getToolkit().beep();
+                e.consume();
             }
         }
-    
-        if (e.getSource()==txtKonfirmPass) 
-        {
-            char c = e.getKeyChar ();
-            if (!((Character.isDigit (c) || (c == KeyEvent.VK_BACK_SPACE)))) {
-                getToolkit().beep (); e.consume ();
-            }
-        }
-    
-    }
 
+        if (e.getSource() == txtKonfirmPass) {
+            char c = e.getKeyChar();
+            if (!((Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE)))) {
+                getToolkit().beep();
+                e.consume();
+            }
+        }
+
+    }
 
     @Override
     public void keyPressed(KeyEvent e) {

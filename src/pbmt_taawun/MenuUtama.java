@@ -5,10 +5,12 @@ import Form.Internal.DftrPeserta;
 import Form.Internal.InfoDataBMT;
 import Form.Internal.InfoPeserta;
 import Form.Internal.InfoTagihan;
-import Form.Internal.InputAccount;
-import Form.Internal.InputDataBMT;
+//import Form.Internal.InputDataBMT;
 import Form.Internal.UbahDataBMT;
+import Form.Internal.crud_dataBMT;
 import Form.Internal.crud_anggota;
+import Form.Internal.crud_adm;
+import Form.Internal.crud_rekening;
 import java.util.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,11 +37,7 @@ public class MenuUtama extends javax.swing.JFrame {
         icon();
     }
 
-    //logo aplikasi
-
-    /**
-     *
-     */
+  
         public void icon() {
         ImageIcon ico = new ImageIcon("src/image/pc.png");
         setIconImage(ico.getImage());
@@ -71,19 +69,18 @@ public class MenuUtama extends javax.swing.JFrame {
         InfoTagihan = new javax.swing.JMenuItem();
         mLaporan = new javax.swing.JMenu();
         MenuProperti = new javax.swing.JMenu();
-        InputDataBMT = new javax.swing.JMenuItem();
+        Crud_DataBMT = new javax.swing.JMenuItem();
         jSeparator8 = new javax.swing.JPopupMenu.Separator();
         InfoDataBMT = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
         UbahDataBMT = new javax.swing.JMenuItem();
         jSeparator6 = new javax.swing.JPopupMenu.Separator();
-        InputAccount = new javax.swing.JMenuItem();
+        crud_rekening = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
-        UbahAccount = new javax.swing.JMenuItem();
+        crud_anggota = new javax.swing.JMenuItem();
         MenuADM = new javax.swing.JMenu();
-        TambahDataADM = new javax.swing.JMenuItem();
+        crud_iuranADM = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
-        UbahDataADM = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         UbahNilaiADM = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
@@ -206,15 +203,15 @@ public class MenuUtama extends javax.swing.JFrame {
         MenuProperti.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Medium 020.png"))); // NOI18N
         MenuProperti.setText("Properti");
 
-        InputDataBMT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/input2.png"))); // NOI18N
-        InputDataBMT.setText("Input Data BMT");
-        InputDataBMT.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        InputDataBMT.addActionListener(new java.awt.event.ActionListener() {
+        Crud_DataBMT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/input2.png"))); // NOI18N
+        Crud_DataBMT.setText("Data BMT");
+        Crud_DataBMT.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Crud_DataBMT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InputDataBMTActionPerformed(evt);
+                Crud_DataBMTActionPerformed(evt);
             }
         });
-        MenuProperti.add(InputDataBMT);
+        MenuProperti.add(Crud_DataBMT);
         MenuProperti.add(jSeparator8);
 
         InfoDataBMT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Medium 044.png"))); // NOI18N
@@ -239,53 +236,43 @@ public class MenuUtama extends javax.swing.JFrame {
         MenuProperti.add(UbahDataBMT);
         MenuProperti.add(jSeparator6);
 
-        InputAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/input.png"))); // NOI18N
-        InputAccount.setText("Input Account");
-        InputAccount.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        InputAccount.addActionListener(new java.awt.event.ActionListener() {
+        crud_rekening.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/input.png"))); // NOI18N
+        crud_rekening.setText("Data Account");
+        crud_rekening.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        crud_rekening.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InputAccountActionPerformed(evt);
+                crud_rekeningActionPerformed(evt);
             }
         });
-        MenuProperti.add(InputAccount);
+        MenuProperti.add(crud_rekening);
         MenuProperti.add(jSeparator7);
 
-        UbahAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/settings (1).png"))); // NOI18N
-        UbahAccount.setText("Ubah Account");
-        UbahAccount.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        UbahAccount.addActionListener(new java.awt.event.ActionListener() {
+        crud_anggota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/settings (1).png"))); // NOI18N
+        crud_anggota.setText("Data Anggota");
+        crud_anggota.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        crud_anggota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UbahAccountActionPerformed(evt);
+                crud_anggotaActionPerformed(evt);
             }
         });
-        MenuProperti.add(UbahAccount);
+        MenuProperti.add(crud_anggota);
 
         jMenuBar1.add(MenuProperti);
 
         MenuADM.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         MenuADM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/utilities-system-monitor.png"))); // NOI18N
-        MenuADM.setText("Administrator");
+        MenuADM.setText("Administrasi");
 
-        TambahDataADM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/single_paper.png"))); // NOI18N
-        TambahDataADM.setText("Tambah Data ADM");
-        TambahDataADM.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        TambahDataADM.addActionListener(new java.awt.event.ActionListener() {
+        crud_iuranADM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/single_paper.png"))); // NOI18N
+        crud_iuranADM.setText("Data iuran");
+        crud_iuranADM.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        crud_iuranADM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TambahDataADMActionPerformed(evt);
+                crud_iuranADMActionPerformed(evt);
             }
         });
-        MenuADM.add(TambahDataADM);
+        MenuADM.add(crud_iuranADM);
         MenuADM.add(jSeparator3);
-
-        UbahDataADM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Refresh.png"))); // NOI18N
-        UbahDataADM.setText("Ubah Data ADM");
-        UbahDataADM.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        UbahDataADM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UbahDataADMActionPerformed(evt);
-            }
-        });
-        MenuADM.add(UbahDataADM);
         MenuADM.add(jSeparator2);
 
         UbahNilaiADM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Refresh.png"))); // NOI18N
@@ -372,12 +359,12 @@ public class MenuUtama extends javax.swing.JFrame {
         intag.setVisible(true);
     }//GEN-LAST:event_InfoTagihanActionPerformed
 
-    private void InputDataBMTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputDataBMTActionPerformed
+    private void Crud_DataBMTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Crud_DataBMTActionPerformed
         // TODO add your handling code here:
-        Form.Internal.InputDataBMT indb = new InputDataBMT();
-        DesktopBackground.add(indb);
-        indb.setVisible(true);
-    }//GEN-LAST:event_InputDataBMTActionPerformed
+        Form.Internal.crud_dataBMT crudbmt = new crud_dataBMT();
+        DesktopBackground.add(crudbmt);
+        crudbmt.setVisible(true);
+    }//GEN-LAST:event_Crud_DataBMTActionPerformed
 
     private void InfoDataBMTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoDataBMTActionPerformed
         // TODO add your handling code here:
@@ -393,24 +380,20 @@ public class MenuUtama extends javax.swing.JFrame {
         updb.setVisible(true);
     }//GEN-LAST:event_UbahDataBMTActionPerformed
 
-    private void InputAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputAccountActionPerformed
+    private void crud_rekeningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crud_rekeningActionPerformed
         // TODO add your handling code here:
-        Form.Internal.InputAccount inacc = new InputAccount();
-        DesktopBackground.add(inacc);
-        inacc.setVisible(true);
-    }//GEN-LAST:event_InputAccountActionPerformed
+        Form.Internal.crud_rekening crudrek = new crud_rekening();
+        DesktopBackground.add(crudrek);
+        crudrek.setVisible(true);
+    }//GEN-LAST:event_crud_rekeningActionPerformed
 
-    private void UbahAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UbahAccountActionPerformed
+    private void crud_anggotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crud_anggotaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_UbahAccountActionPerformed
+    }//GEN-LAST:event_crud_anggotaActionPerformed
 
-    private void TambahDataADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TambahDataADMActionPerformed
+    private void crud_iuranADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crud_iuranADMActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TambahDataADMActionPerformed
-
-    private void UbahDataADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UbahDataADMActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UbahDataADMActionPerformed
+    }//GEN-LAST:event_crud_iuranADMActionPerformed
 
     private void UbahNilaiADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UbahNilaiADMActionPerformed
         // TODO add your handling code here:
@@ -517,24 +500,23 @@ public class MenuUtama extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem BayarIuran;
+    private javax.swing.JMenuItem Crud_DataBMT;
     private javax.swing.JMenuItem DaftarPeserta;
     private javax.swing.JDesktopPane DesktopBackground;
     private javax.swing.JMenuItem InfoDataBMT;
     private javax.swing.JMenuItem InfoPeserta;
     private javax.swing.JMenuItem InfoTagihan;
-    private javax.swing.JMenuItem InputAccount;
-    private javax.swing.JMenuItem InputDataBMT;
     private javax.swing.JMenuItem LogOut;
     private javax.swing.JMenu MenuADM;
     private javax.swing.JMenu MenuInformasi;
     private javax.swing.JMenu MenuProperti;
     private javax.swing.JMenu MenuTransaksi;
-    private javax.swing.JMenuItem TambahDataADM;
-    private javax.swing.JMenuItem UbahAccount;
-    private javax.swing.JMenuItem UbahDataADM;
     private javax.swing.JMenuItem UbahDataBMT;
     private javax.swing.JMenuItem UbahNilaiADM;
     private javax.swing.JMenuItem aggt_bmt;
+    private javax.swing.JMenuItem crud_anggota;
+    private javax.swing.JMenuItem crud_iuranADM;
+    private javax.swing.JMenuItem crud_rekening;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
