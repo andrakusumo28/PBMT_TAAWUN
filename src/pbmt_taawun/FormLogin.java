@@ -94,10 +94,9 @@ public class FormLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("USERNAME         :");
+        jLabel1.setText("USERNAME  :");
 
         txtuser.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
         txtuser.setForeground(new java.awt.Color(255, 255, 255));
@@ -105,10 +104,9 @@ public class FormLogin extends javax.swing.JFrame {
         txtpass.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         txtpass.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("PASSWORD        :");
+        jLabel2.setText("PASSWORD  :");
 
         LoginBtn.setText("LOGIN");
         LoginBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -143,7 +141,7 @@ public class FormLogin extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addComponent(CancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtuser))
-                .addContainerGap(283, Short.MAX_VALUE))
+                .addContainerGap(301, Short.MAX_VALUE))
         );
         backgroundLogin1Layout.setVerticalGroup(
             backgroundLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

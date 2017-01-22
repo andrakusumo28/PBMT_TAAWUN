@@ -1,5 +1,7 @@
 package pbmt_taawun;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import koneksi.Koneksi;
 import java.sql.*;
@@ -23,13 +25,27 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
      */
     public UserAdmin() {
         initComponents();
-        //setLocationRelativeTo(this); 
-
+        //UserAdmin.setLocationRelativeTo(this); 
+        makeCenter();
         bersih();
         kupingTombol();
+        ubah();
         txtPassLama.requestFocusInWindow();
     }
-
+    
+    private void makeCenter() {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension frameSize = this.getSize();
+        if (frameSize.height > screenSize.height) {
+            frameSize.height = screenSize.height;
+        }
+        if (frameSize.width > screenSize.width) {
+            frameSize.width = screenSize.width;
+        }
+        this.setLocation((screenSize.width - frameSize.width) / 2,
+                (screenSize.height - frameSize.height) / 2);
+    }
+    
     public void kupingTombol() {
         txtPassBaru.addKeyListener(this);
         txtKonfirmPass.addKeyListener(this);
@@ -49,7 +65,7 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
     private void user() {
         try {
             koneksi();
-            String sql = "select kewenangan from user";
+            String sql = "select NAMA from user";
             rs = con.createStatement().executeQuery(sql);
             if (rs.next()) {
                 txtUser.setText(rs.getString(1));
@@ -120,7 +136,7 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
             try {
                 String oldPass = "";
                 koneksi();
-                String sql = "select kewenangan from user";
+                String sql = "select NAMA from user";
                 rs = stmt.executeQuery(sql);
                 if (rs.next()) {
                     oldPass = rs.getString(1);
@@ -129,15 +145,15 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
                             int reply = javax.swing.JOptionPane.showConfirmDialog(null, "Yakin Akan Diubah?",
                                     "Konfirmasi", javax.swing.JOptionPane.YES_NO_OPTION);
                             if (reply == javax.swing.JOptionPane.YES_OPTION) {
-                                String ubahPass = "update user set nomor=?, nama=?, password=?, passlama=?, konfirmpass=? kewenangan=? keterangan=? where kewenangan=''";
+                                String ubahPass = "update user set NOMOR=?, NAMA=?, PASSWORD=?, PASSLAMA=?, KONFIRMPASS=? KEWENANGAN=? KETERANGAN=? where NAMA=''";
                                 ps = con.prepareStatement(ubahPass);
                                 //ps.setString(1, txtUser.getText());
-                                ps.setString(1, txtPassLama.getText());
-                                ps.setString(2, txtPassBaru.getText());
-                                ps.setString(3, txtKonfirmPass.getText());
-                                ps.setString(4, txtnama.getText());
-                                ps.setString(5, txtnomor.getText());
-                                ps.setString(6, txtrole.getText());
+                                ps.setString(1, txtnomor.getText());
+                                ps.setString(2, txtnama.getText());
+                                ps.setString(3, txtrole.getText());
+                                ps.setString(4, txtPassLama.getText());
+                                ps.setString(5, txtPassBaru.getText());
+                                ps.setString(6, txtKonfirmPass.getText());
                                 ps.setString(7, txtnotes.getText());
                                 if (ps.executeUpdate() > 0) {
                                     JOptionPane.showMessageDialog(null, "Password Berhasil Diubah",
@@ -165,7 +181,12 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
 
         }
     }
-
+    
+    
+    private void save(){
+    
+}
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -175,6 +196,7 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
         jPanel1 = new javax.swing.JPanel();
         btSimpan = new javax.swing.JButton();
         btBersih = new javax.swing.JButton();
+        btn_save = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -212,7 +234,7 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
 
         btSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/simpan.png"))); // NOI18N
-        btSimpan.setText("Simpan Perubahan");
+        btSimpan.setText("UBAH");
         btSimpan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btSimpan.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btSimpan.addActionListener(new java.awt.event.ActionListener() {
@@ -229,6 +251,14 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
             }
         });
 
+        btn_save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/ok.png"))); // NOI18N
+        btn_save.setText("SAVE");
+        btn_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_saveActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -236,18 +266,24 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btSimpan)
-                .addGap(60, 60, 60)
-                .addComponent(btBersih, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                .addGap(67, 67, 67)
+                .addComponent(btn_save)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btBersih)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btBersih, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btSimpan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btBersih, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btSimpan))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(btn_save, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 255));
@@ -422,11 +458,15 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
 
         // TODO add your handling code here:}//GEN-LAST:event_txtUserActionPerformed
     }
+    
+    private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_saveActionPerformed
+    
 
     /**
      * @param args the command line arguments
      */
-
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -440,6 +480,7 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBersih;
     private javax.swing.JButton btSimpan;
+    private javax.swing.JButton btn_save;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -467,11 +508,11 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
     @Override
     public void keyTyped(KeyEvent e) {
         /*
-         * validasi hanya inputan angka pada textfield
+         * validasi inputan pada textfield
          */
         if (e.getSource() == txtPassBaru) {
             char c = e.getKeyChar();
-            if (!((Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE)))) {
+            if (!((Character.isLetterOrDigit(c) || (c == KeyEvent.VK_BACK_SPACE)))) {
                 getToolkit().beep();
                 e.consume();
             }
@@ -479,7 +520,7 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
 
         if (e.getSource() == txtKonfirmPass) {
             char c = e.getKeyChar();
-            if (!((Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE)))) {
+            if (!((Character.isLetterOrDigit(c) || (c == KeyEvent.VK_BACK_SPACE)))) {
                 getToolkit().beep();
                 e.consume();
             }

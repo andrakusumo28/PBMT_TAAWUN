@@ -48,7 +48,6 @@ public class crud_anggota extends javax.swing.JInternalFrame {
         aerithLabel16 = new aerith.swing.AerithLabel();
         txtno_ktp = new javax.swing.JTextField();
         txtnama = new javax.swing.JTextField();
-        txt_alamat = new javax.swing.JTextField();
         txt_templahir = new javax.swing.JTextField();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         aerithLabel17 = new aerith.swing.AerithLabel();
@@ -59,6 +58,8 @@ public class crud_anggota extends javax.swing.JInternalFrame {
         jTextField3 = new javax.swing.JTextField();
         aerithActionButton1 = new aerith.swing.AerithActionButton();
         aerithActionButton2 = new aerith.swing.AerithActionButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtalamat = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         pnl_anggota1 = new javax.swing.JPanel();
         aerithLabel3 = new aerith.swing.AerithLabel();
@@ -66,19 +67,20 @@ public class crud_anggota extends javax.swing.JInternalFrame {
         aerithLabel20 = new aerith.swing.AerithLabel();
         aerithLabel21 = new aerith.swing.AerithLabel();
         aerithLabel22 = new aerith.swing.AerithLabel();
-        txtno_ktp1 = new javax.swing.JTextField();
-        txtnama1 = new javax.swing.JTextField();
-        txt_alamat1 = new javax.swing.JTextField();
-        txt_templahir1 = new javax.swing.JTextField();
+        txtno_ktpubah = new javax.swing.JTextField();
+        txtnama_ubah = new javax.swing.JTextField();
+        txt_templahirubah = new javax.swing.JTextField();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         aerithLabel23 = new aerith.swing.AerithLabel();
         aerithLabel24 = new aerith.swing.AerithLabel();
         aerithLabel25 = new aerith.swing.AerithLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        txt_lksusahaubah = new javax.swing.JTextField();
+        txt_jnsusaha_ubah = new javax.swing.JTextField();
+        txt_nikbmtubah = new javax.swing.JTextField();
         aerithActionButton3 = new aerith.swing.AerithActionButton();
         aerithActionButton4 = new aerith.swing.AerithActionButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtalamat_ubah = new javax.swing.JTextArea();
 
         setClosable(true);
 
@@ -143,6 +145,10 @@ public class crud_anggota extends javax.swing.JInternalFrame {
         aerithActionButton2.setText("DAFTAR");
         aerithActionButton2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
 
+        txtalamat.setColumns(20);
+        txtalamat.setRows(5);
+        jScrollPane1.setViewportView(txtalamat);
+
         javax.swing.GroupLayout pnl_anggotaLayout = new javax.swing.GroupLayout(pnl_anggota);
         pnl_anggota.setLayout(pnl_anggotaLayout);
         pnl_anggotaLayout.setHorizontalGroup(
@@ -160,10 +166,10 @@ public class crud_anggota extends javax.swing.JInternalFrame {
                 .addGroup(pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtno_ktp)
                     .addComponent(txtnama)
-                    .addComponent(txt_alamat)
                     .addComponent(txt_templahir)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
-                .addGap(48, 48, 48)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnl_anggotaLayout.createSequentialGroup()
                         .addGroup(pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -177,9 +183,9 @@ public class crud_anggota extends javax.swing.JInternalFrame {
                             .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)))
                     .addGroup(pnl_anggotaLayout.createSequentialGroup()
                         .addComponent(aerithActionButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(30, 30, 30)
                         .addComponent(aerithActionButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         pnl_anggotaLayout.setVerticalGroup(
             pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +205,6 @@ public class crud_anggota extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(aerithLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_alamat, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnl_anggotaLayout.createSequentialGroup()
                         .addGroup(pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(aerithLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,8 +212,9 @@ public class crud_anggota extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(aerithActionButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(aerithActionButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(6, 6, 6)
+                            .addComponent(aerithActionButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(aerithLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_templahir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -216,7 +222,7 @@ public class crud_anggota extends javax.swing.JInternalFrame {
                 .addGroup(pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(aerithLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         tab_anggota.addTab("Daftar Anggota BMT", pnl_anggota);
@@ -250,9 +256,9 @@ public class crud_anggota extends javax.swing.JInternalFrame {
         aerithLabel22.setText("TANGGAL LAHIR :");
         aerithLabel22.setFont(new java.awt.Font("Default", 1, 12)); // NOI18N
 
-        txtno_ktp1.addActionListener(new java.awt.event.ActionListener() {
+        txtno_ktpubah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtno_ktp1ActionPerformed(evt);
+                txtno_ktpubahActionPerformed(evt);
             }
         });
 
@@ -281,6 +287,10 @@ public class crud_anggota extends javax.swing.JInternalFrame {
         aerithActionButton4.setText("SIMPAN");
         aerithActionButton4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
 
+        txtalamat_ubah.setColumns(20);
+        txtalamat_ubah.setRows(5);
+        jScrollPane2.setViewportView(txtalamat_ubah);
+
         javax.swing.GroupLayout pnl_anggota1Layout = new javax.swing.GroupLayout(pnl_anggota1);
         pnl_anggota1.setLayout(pnl_anggota1Layout);
         pnl_anggota1Layout.setHorizontalGroup(
@@ -296,12 +306,12 @@ public class crud_anggota extends javax.swing.JInternalFrame {
                         .addComponent(aerithLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnl_anggota1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtno_ktp1)
-                    .addComponent(txtnama1)
-                    .addComponent(txt_alamat1)
-                    .addComponent(txt_templahir1)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
-                .addGap(48, 48, 48)
+                    .addComponent(txtno_ktpubah)
+                    .addComponent(txtnama_ubah)
+                    .addComponent(txt_templahirubah)
+                    .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnl_anggota1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnl_anggota1Layout.createSequentialGroup()
                         .addGroup(pnl_anggota1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -310,14 +320,14 @@ public class crud_anggota extends javax.swing.JInternalFrame {
                             .addComponent(aerithLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnl_anggota1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField4)
-                            .addComponent(jTextField5)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)))
+                            .addComponent(txt_lksusahaubah)
+                            .addComponent(txt_jnsusaha_ubah)
+                            .addComponent(txt_nikbmtubah, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)))
                     .addGroup(pnl_anggota1Layout.createSequentialGroup()
                         .addComponent(aerithActionButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(26, 26, 26)
                         .addComponent(aerithActionButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         pnl_anggota1Layout.setVerticalGroup(
             pnl_anggota1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,36 +335,36 @@ public class crud_anggota extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(pnl_anggota1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(aerithLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtno_ktp1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtno_ktpubah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(aerithLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_lksusahaubah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnl_anggota1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(aerithLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtnama1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtnama_ubah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(aerithLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_jnsusaha_ubah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnl_anggota1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(aerithLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_alamat1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnl_anggota1Layout.createSequentialGroup()
                         .addGroup(pnl_anggota1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(aerithLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txt_nikbmtubah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(pnl_anggota1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(aerithActionButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(aerithActionButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(6, 6, 6)
+                            .addComponent(aerithActionButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnl_anggota1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(aerithLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_templahir1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_templahirubah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnl_anggota1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(aerithLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -368,7 +378,7 @@ public class crud_anggota extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(6, 6, 6)
                 .addComponent(pnl_anggota1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -392,9 +402,9 @@ public class crud_anggota extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtno_ktpActionPerformed
 
-    private void txtno_ktp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtno_ktp1ActionPerformed
+    private void txtno_ktpubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtno_ktpubahActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtno_ktp1ActionPerformed
+    }//GEN-LAST:event_txtno_ktpubahActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -421,22 +431,24 @@ public class crud_anggota extends javax.swing.JInternalFrame {
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JPanel pnl_anggota;
     private javax.swing.JPanel pnl_anggota1;
     private javax.swing.JTabbedPane tab_anggota;
-    private javax.swing.JTextField txt_alamat;
-    private javax.swing.JTextField txt_alamat1;
+    private javax.swing.JTextField txt_jnsusaha_ubah;
+    private javax.swing.JTextField txt_lksusahaubah;
+    private javax.swing.JTextField txt_nikbmtubah;
     private javax.swing.JTextField txt_templahir;
-    private javax.swing.JTextField txt_templahir1;
+    private javax.swing.JTextField txt_templahirubah;
+    private javax.swing.JTextArea txtalamat;
+    private javax.swing.JTextArea txtalamat_ubah;
     private javax.swing.JTextField txtnama;
-    private javax.swing.JTextField txtnama1;
+    private javax.swing.JTextField txtnama_ubah;
     private javax.swing.JTextField txtno_ktp;
-    private javax.swing.JTextField txtno_ktp1;
+    private javax.swing.JTextField txtno_ktpubah;
     // End of variables declaration//GEN-END:variables
 }

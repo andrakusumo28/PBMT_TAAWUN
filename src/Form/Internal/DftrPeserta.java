@@ -1,6 +1,5 @@
 package Form.Internal;
 
-
 import java.awt.Dimension;
 import java.awt.TextField;
 import java.awt.Toolkit;
@@ -43,7 +42,7 @@ public class DftrPeserta extends javax.swing.JInternalFrame {
         iuran_jiwa.setEnabled(false);
         iuran_kebakaran.setEnabled(false);
     }
-    
+
     private void makeCenter() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension frameSize = this.getSize();
@@ -56,7 +55,7 @@ public class DftrPeserta extends javax.swing.JInternalFrame {
         this.setLocation((screenSize.width - frameSize.width) / 2,
                 (screenSize.height - frameSize.height) / 2);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -110,6 +109,7 @@ public class DftrPeserta extends javax.swing.JInternalFrame {
 
         jLabel20.setText("STATUS");
 
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel19.setText(" JUMLAH IURAN");
 
         jLabel1.setFont(new java.awt.Font("Arial Unicode MS", 1, 18)); // NOI18N
@@ -383,57 +383,55 @@ public class DftrPeserta extends javax.swing.JInternalFrame {
 
     private void no_ktpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_no_ktpKeyPressed
         // TODO add your handling code here:
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             try {
 
-            conn = konek.bukaKoneksi();
-            sqlStatement = conn.createStatement();
-            sqlStatement1 = conn.createStatement();
-    //        conn.commit();
+                conn = konek.bukaKoneksi();
+                sqlStatement = conn.createStatement();
+                sqlStatement1 = conn.createStatement();
+                //        conn.commit();
 
-            String ktp = no_ktp.getText().trim();
-            StringBuffer buff = new StringBuffer();
-            buff.append("SELECT * FROM data_peserta WHERE NO_KTP ='").append(ktp).append("'");
-            sqlResultSet = sqlStatement.executeQuery(buff.toString());
-            if(sqlResultSet.next()){
-                 
-                no_ktp.setEnabled(false);
-                no_ktp.setText(sqlResultSet.getString(1).toString()); 
-                nama.setText(sqlResultSet.getString(3).toString());
-                alamat.setText(sqlResultSet.getString(4).toString());
-                tmpt_lahir.setText(sqlResultSet.getString(5).toString());
-                tgllahir.setDate(sqlResultSet.getDate(6));
-                lokasi_usaha.setText(sqlResultSet.getString(7).toString());
-                jns_usaha.setText(sqlResultSet.getString(8).toString());
-                no_bmt.setText(sqlResultSet.getString(9).toString());
-                rekening.setText(sqlResultSet.getString(10).toString());
-                jml_pembiayaan.setText(sqlResultSet.getString(11).toString());
-                tglakad.setDate(sqlResultSet.getDate(12));
-                tgltempo.setDate(sqlResultSet.getDate(13));
-                jangka_waktu.setText(sqlResultSet.getString(14).toString());
-                iuran_jiwa.setText(sqlResultSet.getString(15).toString());
-                iuran_kebakaran.setText(sqlResultSet.getString(16).toString());
-                jml_iuran.setText(sqlResultSet.getString(17).toString());
-            }else{
+                String ktp = no_ktp.getText().trim();
+                StringBuffer buff = new StringBuffer();
+                buff.append("SELECT * FROM data_peserta WHERE NO_KTP ='").append(ktp).append("'");
+                sqlResultSet = sqlStatement.executeQuery(buff.toString());
+                if (sqlResultSet.next()) {
 
-                nama.isFocusable();
-            }
+                    no_ktp.setEnabled(false);
+                    no_ktp.setText(sqlResultSet.getString(1).toString());
+                    nama.setText(sqlResultSet.getString(3).toString());
+                    alamat.setText(sqlResultSet.getString(4).toString());
+                    tmpt_lahir.setText(sqlResultSet.getString(5).toString());
+                    tgllahir.setDate(sqlResultSet.getDate(6));
+                    lokasi_usaha.setText(sqlResultSet.getString(7).toString());
+                    jns_usaha.setText(sqlResultSet.getString(8).toString());
+                    no_bmt.setText(sqlResultSet.getString(9).toString());
+                    rekening.setText(sqlResultSet.getString(10).toString());
+                    jml_pembiayaan.setText(sqlResultSet.getString(11).toString());
+                    tglakad.setDate(sqlResultSet.getDate(12));
+                    tgltempo.setDate(sqlResultSet.getDate(13));
+                    jangka_waktu.setText(sqlResultSet.getString(14).toString());
+                    iuran_jiwa.setText(sqlResultSet.getString(15).toString());
+                    iuran_kebakaran.setText(sqlResultSet.getString(16).toString());
+                    jml_iuran.setText(sqlResultSet.getString(17).toString());
+                } else {
+
+                    nama.isFocusable();
+                }
             } catch (Exception es) {
                 JOptionPane.showMessageDialog(null, es.getMessage(), "Information", JOptionPane.ERROR);
                 es.printStackTrace();
             }
-        } 
+        }
     }//GEN-LAST:event_no_ktpKeyPressed
 
     private void daftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daftarActionPerformed
         // TODO add your handling code here:
-        if(no_ktp.getText() == null || no_bmt.getText() == null)
-        {
+        if (no_ktp.getText() == null || no_bmt.getText() == null) {
             JOptionPane.showMessageDialog(null, "Please..fill the box complete", "Information", JOptionPane.PLAIN_MESSAGE);
-        }else
-        {
+        } else {
             try {
-                
+
                 conn = konek.bukaKoneksi();
                 sqlStatement = conn.createStatement();
                 sqlStatement1 = conn.createStatement();
@@ -443,35 +441,33 @@ public class DftrPeserta extends javax.swing.JInternalFrame {
                 buff.append("SELECT * FROM data_peserta WHERE NO_KTP ='").append(ktp).append("'");
                 sqlResultSet = sqlStatement.executeQuery(buff.toString());
                 buff = new StringBuffer();
-                
-                if(sqlResultSet.next() == true)
-                {
+
+                if (sqlResultSet.next() == true) {
                     buff.append("UPDATE data_peserta SET TANGGAL = '").append(sdf.format(date)).append("',")
-                        .append("NAMA='").append(nama.getText()).append("',ALAMAT ='").append(alamat.getText())
-                        .append("',TEMPAT_LAHIR='").append(tmpt_lahir.getText()).append("',TANGGAL_LAHIR='")
-                        .append(sdf.format(tgllahir.getDate())).append("',LKS_USAHA='").append(lokasi_usaha.getText())
-                        .append("',JENIS_USAHA='").append(jns_usaha.getText()).append("',NIK_BMT='").append(no_bmt.getText())
-                        .append("',REKENING='").append(rekening.getText()).append("',PEMBIAYAAN='").append(Integer.valueOf(jml_pembiayaan.getText()))
-                        .append("',TGL_AKAD='").append(sdf.format(tglakad.getDate())).append("',JTH_TEMPO='").append(sdf.format(tgltempo.getDate()))
-                        .append("',JGK_WAKTU='").append(Integer.valueOf(jangka_waktu.getText()))
-                        .append("',IURAN_JIWA='").append(Integer.valueOf(iuran_jiwa.getText()))
-                        .append("',IURAN_KEBAKARAN='").append(Integer.valueOf(iuran_kebakaran.getText()))
-                        .append("',JML_IURAN='").append(Integer.valueOf(jml_iuran.getText()))
-                        .append("' WHERE NO_KTP ='").append(ktp).append("'");
+                            .append("NAMA='").append(nama.getText()).append("',ALAMAT ='").append(alamat.getText())
+                            .append("',TEMPAT_LAHIR='").append(tmpt_lahir.getText()).append("',TANGGAL_LAHIR='")
+                            .append(sdf.format(tgllahir.getDate())).append("',LKS_USAHA='").append(lokasi_usaha.getText())
+                            .append("',JENIS_USAHA='").append(jns_usaha.getText()).append("',NIK_BMT='").append(no_bmt.getText())
+                            .append("',REKENING='").append(rekening.getText()).append("',PEMBIAYAAN='").append(Integer.valueOf(jml_pembiayaan.getText()))
+                            .append("',TGL_AKAD='").append(sdf.format(tglakad.getDate())).append("',JTH_TEMPO='").append(sdf.format(tgltempo.getDate()))
+                            .append("',JGK_WAKTU='").append(Integer.valueOf(jangka_waktu.getText()))
+                            .append("',IURAN_JIWA='").append(Integer.valueOf(iuran_jiwa.getText()))
+                            .append("',IURAN_KEBAKARAN='").append(Integer.valueOf(iuran_kebakaran.getText()))
+                            .append("',JML_IURAN='").append(Integer.valueOf(jml_iuran.getText()))
+                            .append("' WHERE NO_KTP ='").append(ktp).append("'");
                     System.out.println(buff.toString());
                     sqlStatement1.executeUpdate(buff.toString());
                     JOptionPane.showMessageDialog(null, "Update Data Success..", "Information", JOptionPane.INFORMATION_MESSAGE);
-                }else
-                {
+                } else {
                     buff.append("INSERT INTO data_peserta VALUES('").append(no_ktp.getText()).append("','").append(sdf.format(date))
-                        .append("','").append(nama.getText()).append("','").append(alamat.getText()).append("','").append(tmpt_lahir.getText())
-                        .append("','").append(sdf.format(tgllahir.getDate())).append("','").append(lokasi_usaha.getText())
-                        .append("','").append(jns_usaha.getText()).append("','").append(no_bmt.getText())
-                        .append("','").append(rekening.getText()).append("','").append(Integer.valueOf(jml_pembiayaan.getText()))
-                        .append("','").append(sdf.format(tglakad.getDate())).append("','").append(sdf.format(tgltempo.getDate()))
-                        .append("','").append(Integer.valueOf(jangka_waktu.getText())).append("','").append(Integer.valueOf(iuran_jiwa.getText()))
-                        .append("','").append(Integer.valueOf(iuran_kebakaran.getText())).append("','").append(Integer.valueOf(jml_iuran.getText()))
-                        .append("')");
+                            .append("','").append(nama.getText()).append("','").append(alamat.getText()).append("','").append(tmpt_lahir.getText())
+                            .append("','").append(sdf.format(tgllahir.getDate())).append("','").append(lokasi_usaha.getText())
+                            .append("','").append(jns_usaha.getText()).append("','").append(no_bmt.getText())
+                            .append("','").append(rekening.getText()).append("','").append(Integer.valueOf(jml_pembiayaan.getText()))
+                            .append("','").append(sdf.format(tglakad.getDate())).append("','").append(sdf.format(tgltempo.getDate()))
+                            .append("','").append(Integer.valueOf(jangka_waktu.getText())).append("','").append(Integer.valueOf(iuran_jiwa.getText()))
+                            .append("','").append(Integer.valueOf(iuran_kebakaran.getText())).append("','").append(Integer.valueOf(jml_iuran.getText()))
+                            .append("')");
                     System.out.println(buff.toString());
                     sqlStatement1.executeUpdate(buff.toString());
                     JOptionPane.showMessageDialog(null, "Insert Data Success", "Information", JOptionPane.INFORMATION_MESSAGE);
@@ -480,95 +476,104 @@ public class DftrPeserta extends javax.swing.JInternalFrame {
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage(), "Information", JOptionPane.PLAIN_MESSAGE);
                 e.printStackTrace();
-            }finally{
-                
+            } finally {
+
                 try {
-                    if(sqlResultSet1 != null)
-                    {
+                    if (sqlResultSet1 != null) {
                         sqlResultSet1.close();
                     }
-                    if(sqlStatement1 != null)
-                    {
+                    if (sqlStatement1 != null) {
                         sqlStatement1.close();
                     }
                 } catch (Exception e) {
                     JOptionPane.showMessageDialog(null, e.getMessage(), "Information", JOptionPane.PLAIN_MESSAGE);
                 }
-            
+
             }
         }
     }//GEN-LAST:event_daftarActionPerformed
 
     private void no_bmtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_no_bmtKeyTyped
         // TODO add your handling code here:
-        boolean cond=true;String i = "";
-	while(cond){
+        boolean cond = true;
+        String i = "";
+        while (cond) {
 
-	 
-            i=String.valueOf(evt.getKeyChar());
-            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();;
-            cond=false;
+            i = String.valueOf(evt.getKeyChar());
+            for (int y = 0; y < i.length(); ++y) {
+                if (!Character.isDigit(i.charAt(y))) {
+                    evt.consume();
+                }
+            };
+            cond = false;
         }
     }//GEN-LAST:event_no_bmtKeyTyped
 
     private void rekeningKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rekeningKeyTyped
         // TODO add your handling code here:
-         boolean cond=true;String i = "";
-	while(cond){
+        boolean cond = true;
+        String i = "";
+        while (cond) {
 
-	 
-            i=String.valueOf(evt.getKeyChar());
-            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();;
-            cond=false;
+            i = String.valueOf(evt.getKeyChar());
+            for (int y = 0; y < i.length(); ++y) {
+                if (!Character.isDigit(i.charAt(y))) {
+                    evt.consume();
+                }
+            };
+            cond = false;
         }
     }//GEN-LAST:event_rekeningKeyTyped
 
     private void jml_pembiayaanKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jml_pembiayaanKeyTyped
         // TODO add your handling code here:
-         boolean cond=true;String i = "";
-	while(cond){
+        boolean cond = true;
+        String i = "";
+        while (cond) {
 
-	 
-            i=String.valueOf(evt.getKeyChar());
-            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();;
-            cond=false;
+            i = String.valueOf(evt.getKeyChar());
+            for (int y = 0; y < i.length(); ++y) {
+                if (!Character.isDigit(i.charAt(y))) {
+                    evt.consume();
+                }
+            };
+            cond = false;
         }
     }//GEN-LAST:event_jml_pembiayaanKeyTyped
 
     private void jangka_waktuKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jangka_waktuKeyTyped
         // TODO add your handling code here:
-        if(jangka_waktu.getText().length()==3) 
-         {
-             evt.consume();
-         }
-         boolean cond=true;String i = "";
-	while(cond){
+        if (jangka_waktu.getText().length() == 3) {
+            evt.consume();
+        }
+        boolean cond = true;
+        String i = "";
+        while (cond) {
 
-	 
-             i=String.valueOf(evt.getKeyChar());
-            for(int y=0;y<i.length();++y)if(!Character.isDigit(i.charAt(y)))evt.consume();;
-            cond=false;
-            
+            i = String.valueOf(evt.getKeyChar());
+            for (int y = 0; y < i.length(); ++y) {
+                if (!Character.isDigit(i.charAt(y))) {
+                    evt.consume();
+                }
+            };
+            cond = false;
+
         }
     }//GEN-LAST:event_jangka_waktuKeyTyped
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
-        if(jCheckBox1.isSelected())
-        {
+        if (jCheckBox1.isSelected()) {
             iuran_jiwa.setEnabled(true);
             iuran_jiwa.setEditable(false);
-            if(jml_pembiayaan.getText() != null)
-            {
-                int b = (Integer.valueOf(jml_pembiayaan.getText()) / 100)*3;
+            if (jml_pembiayaan.getText() != null) {
+                int b = (Integer.valueOf(jml_pembiayaan.getText()) / 100) * 3;
                 iuran_jiwa.setText(String.valueOf(b));
-            }else
-            {
+            } else {
                 JOptionPane.showMessageDialog(null, "Please..fill pembiayaan textbox", "Information", JOptionPane.ERROR);
-                
+
             }
-        }else
-        {
+        } else {
             iuran_jiwa.setEnabled(false);
             iuran_jiwa.setText("0");
         }
@@ -576,22 +581,18 @@ public class DftrPeserta extends javax.swing.JInternalFrame {
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
         // TODO add your handling code here:
-        if(jCheckBox2.isSelected())
-        {
+        if (jCheckBox2.isSelected()) {
             iuran_kebakaran.setEnabled(true);
             iuran_kebakaran.setEditable(false);
-            if(jml_pembiayaan.getText() != null)
-            {
-                int b = (Integer.valueOf(jml_pembiayaan.getText()) / 100)*3;
+            if (jml_pembiayaan.getText() != null) {
+                int b = (Integer.valueOf(jml_pembiayaan.getText()) / 100) * 3;
                 iuran_kebakaran.setText(String.valueOf(b));
-            }else
-            {
+            } else {
                 JOptionPane.showMessageDialog(null, "Please..fill pembiayaan textbox", "Information", JOptionPane.ERROR);
-                
+
             }
-            
-        }else
-        {
+
+        } else {
             iuran_kebakaran.setEnabled(false);
             iuran_kebakaran.setText("0");
         }
@@ -644,8 +645,7 @@ public class DftrPeserta extends javax.swing.JInternalFrame {
     private javax.swing.JTextField tmpt_lahir;
     // End of variables declaration//GEN-END:variables
 
-    private void clearData()
-    {
+    private void clearData() {
         no_ktp.setText("");
         nama.setText("");
         alamat.setText("");
