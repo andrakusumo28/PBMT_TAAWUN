@@ -73,10 +73,11 @@ public class FormLogin extends javax.swing.JFrame {
 
         jFrame1 = new javax.swing.JFrame();
         backgroundLogin1 = new image.BackgroundLogin();
+        fTransparan1 = new Panel.Trans.FTransparan();
         jLabel1 = new javax.swing.JLabel();
         txtuser = new javax.swing.JTextField();
-        txtpass = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
+        txtpass = new javax.swing.JPasswordField();
         LoginBtn = new aerith.swing.AerithActionButton();
         CancelBtn = new aerith.swing.AerithActionButton();
 
@@ -94,19 +95,24 @@ public class FormLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
+        fTransparan1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("USERNAME  :");
 
         txtuser.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        txtuser.setForeground(new java.awt.Color(255, 255, 255));
-
-        txtpass.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        txtpass.setForeground(new java.awt.Color(255, 255, 255));
+        txtuser.setForeground(new java.awt.Color(0, 0, 0));
+        txtuser.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("PASSWORD  :");
+
+        txtpass.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        txtpass.setForeground(new java.awt.Color(0, 0, 0));
+        txtpass.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtpass.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         LoginBtn.setText("LOGIN");
         LoginBtn.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -124,41 +130,58 @@ public class FormLogin extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout fTransparan1Layout = new javax.swing.GroupLayout(fTransparan1);
+        fTransparan1.setLayout(fTransparan1Layout);
+        fTransparan1Layout.setHorizontalGroup(
+            fTransparan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fTransparan1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(fTransparan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(fTransparan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtpass, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, fTransparan1Layout.createSequentialGroup()
+                        .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(CancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtuser, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        fTransparan1Layout.setVerticalGroup(
+            fTransparan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fTransparan1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(fTransparan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(fTransparan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(fTransparan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout backgroundLogin1Layout = new javax.swing.GroupLayout(backgroundLogin1);
         backgroundLogin1.setLayout(backgroundLogin1Layout);
         backgroundLogin1Layout.setHorizontalGroup(
             backgroundLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(backgroundLogin1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(backgroundLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(backgroundLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(txtpass, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, backgroundLogin1Layout.createSequentialGroup()
-                        .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(CancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtuser))
-                .addContainerGap(301, Short.MAX_VALUE))
+                .addContainerGap(216, Short.MAX_VALUE)
+                .addComponent(fTransparan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(217, Short.MAX_VALUE))
         );
         backgroundLogin1Layout.setVerticalGroup(
             backgroundLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLogin1Layout.createSequentialGroup()
-                .addContainerGap(190, Short.MAX_VALUE)
-                .addGroup(backgroundLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(backgroundLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(backgroundLogin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(120, 120, 120))
+            .addGroup(backgroundLogin1Layout.createSequentialGroup()
+                .addContainerGap(140, Short.MAX_VALUE)
+                .addComponent(fTransparan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(140, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -182,8 +205,9 @@ public class FormLogin extends javax.swing.JFrame {
 
     private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
         // TODO add your handling code here:
-        pbmt_taawun.MenuUtama mnu = new MenuUtama();
-        mnu.setVisible(true);
+//        pbmt_taawun.MenuUtama mnu = new MenuUtama();
+//        mnu.setVisible(true);
+        cariuser();
     }//GEN-LAST:event_LoginBtnActionPerformed
 
     /**
@@ -242,6 +266,7 @@ public class FormLogin extends javax.swing.JFrame {
     private aerith.swing.AerithActionButton CancelBtn;
     private aerith.swing.AerithActionButton LoginBtn;
     private image.BackgroundLogin backgroundLogin1;
+    private Panel.Trans.FTransparan fTransparan1;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

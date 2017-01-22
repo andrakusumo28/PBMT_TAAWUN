@@ -9,6 +9,7 @@ import javax.swing.UIManager;
  */
 public class Main {
     MenuUtama menu = new MenuUtama();
+    //FormLogin form = new FormLogin();
     /**
      * @param args the command line arguments
      */
@@ -20,6 +21,6 @@ public class Main {
             e.printStackTrace();
         }
         
-        new MenuUtama().show();//new LoginForm().show();
+        new FormLogin().show();//new LoginForm().show();
 }
 }

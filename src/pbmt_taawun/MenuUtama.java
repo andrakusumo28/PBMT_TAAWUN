@@ -5,6 +5,7 @@ import Form.Internal.DftrPeserta;
 import Form.Internal.InfoDataBMT;
 import Form.Internal.InfoPeserta;
 import Form.Internal.InfoTagihan;
+import Form.Internal.cetaklaporan;
 //import Form.Internal.InputDataBMT;
 import Form.Internal.UbahDataBMT;
 import Form.Internal.crud_dataBMT;
@@ -68,21 +69,17 @@ public class MenuUtama extends javax.swing.JFrame {
         jSeparator9 = new javax.swing.JPopupMenu.Separator();
         InfoTagihan = new javax.swing.JMenuItem();
         mLaporan = new javax.swing.JMenu();
+        cetaklaporan = new javax.swing.JMenuItem();
         MenuProperti = new javax.swing.JMenu();
         Crud_DataBMT = new javax.swing.JMenuItem();
         jSeparator8 = new javax.swing.JPopupMenu.Separator();
         InfoDataBMT = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
-        UbahDataBMT = new javax.swing.JMenuItem();
-        jSeparator6 = new javax.swing.JPopupMenu.Separator();
         crud_rekening = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
         crud_anggota = new javax.swing.JMenuItem();
         MenuADM = new javax.swing.JMenu();
         crud_iuranADM = new javax.swing.JMenuItem();
-        jSeparator3 = new javax.swing.JPopupMenu.Separator();
-        jSeparator2 = new javax.swing.JPopupMenu.Separator();
-        UbahNilaiADM = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         useradmin = new javax.swing.JMenuItem();
         jSeparator10 = new javax.swing.JPopupMenu.Separator();
@@ -197,6 +194,16 @@ public class MenuUtama extends javax.swing.JFrame {
         mLaporan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         mLaporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/document-print.png"))); // NOI18N
         mLaporan.setText("Cetak Laporan");
+
+        cetaklaporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/document-print.png"))); // NOI18N
+        cetaklaporan.setText("Laporan");
+        cetaklaporan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cetaklaporanActionPerformed(evt);
+            }
+        });
+        mLaporan.add(cetaklaporan);
+
         jMenuBar1.add(mLaporan);
 
         MenuProperti.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -224,17 +231,6 @@ public class MenuUtama extends javax.swing.JFrame {
         });
         MenuProperti.add(InfoDataBMT);
         MenuProperti.add(jSeparator5);
-
-        UbahDataBMT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/folder_blue_settings.png"))); // NOI18N
-        UbahDataBMT.setText("Ubah Data BMT");
-        UbahDataBMT.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        UbahDataBMT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UbahDataBMTActionPerformed(evt);
-            }
-        });
-        MenuProperti.add(UbahDataBMT);
-        MenuProperti.add(jSeparator6);
 
         crud_rekening.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/input.png"))); // NOI18N
         crud_rekening.setText("Data Account");
@@ -272,18 +268,6 @@ public class MenuUtama extends javax.swing.JFrame {
             }
         });
         MenuADM.add(crud_iuranADM);
-        MenuADM.add(jSeparator3);
-        MenuADM.add(jSeparator2);
-
-        UbahNilaiADM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Refresh.png"))); // NOI18N
-        UbahNilaiADM.setText("Ubah Nilai ADM");
-        UbahNilaiADM.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        UbahNilaiADM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UbahNilaiADMActionPerformed(evt);
-            }
-        });
-        MenuADM.add(UbahNilaiADM);
         MenuADM.add(jSeparator4);
 
         useradmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user_admin.png"))); // NOI18N
@@ -373,13 +357,6 @@ public class MenuUtama extends javax.swing.JFrame {
         infdb.setVisible(true);
     }//GEN-LAST:event_InfoDataBMTActionPerformed
 
-    private void UbahDataBMTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UbahDataBMTActionPerformed
-        // TODO add your handling code here:
-        Form.Internal.UbahDataBMT updb = new UbahDataBMT();
-        DesktopBackground.add(updb);
-        updb.setVisible(true);
-    }//GEN-LAST:event_UbahDataBMTActionPerformed
-
     private void crud_rekeningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crud_rekeningActionPerformed
         // TODO add your handling code here:
         Form.Internal.crud_rekening crudrek = new crud_rekening();
@@ -394,10 +371,6 @@ public class MenuUtama extends javax.swing.JFrame {
     private void crud_iuranADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crud_iuranADMActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_crud_iuranADMActionPerformed
-
-    private void UbahNilaiADMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UbahNilaiADMActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UbahNilaiADMActionPerformed
 
     private void LogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogOutActionPerformed
         // TODO add your handling code here:
@@ -418,6 +391,13 @@ public class MenuUtama extends javax.swing.JFrame {
         crgt.setVisible(true);
         
     }//GEN-LAST:event_aggt_bmtActionPerformed
+
+    private void cetaklaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetaklaporanActionPerformed
+        // TODO add your handling code here:
+        cetaklaporan cetak = new cetaklaporan();
+        DesktopBackground.add(cetak);
+        cetak.setVisible(true);
+    }//GEN-LAST:event_cetaklaporanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -511,9 +491,8 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JMenu MenuInformasi;
     private javax.swing.JMenu MenuProperti;
     private javax.swing.JMenu MenuTransaksi;
-    private javax.swing.JMenuItem UbahDataBMT;
-    private javax.swing.JMenuItem UbahNilaiADM;
     private javax.swing.JMenuItem aggt_bmt;
+    private javax.swing.JMenuItem cetaklaporan;
     private javax.swing.JMenuItem crud_anggota;
     private javax.swing.JMenuItem crud_iuranADM;
     private javax.swing.JMenuItem crud_rekening;
@@ -523,11 +502,8 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator10;
     private javax.swing.JPopupMenu.Separator jSeparator11;
-    private javax.swing.JPopupMenu.Separator jSeparator2;
-    private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
-    private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JPopupMenu.Separator jSeparator7;
     private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JPopupMenu.Separator jSeparator9;
