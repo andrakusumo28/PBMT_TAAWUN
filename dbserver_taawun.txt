@@ -1,0 +1,9 @@
+IP:PORT = 103.22.251.42:52727
+
+Server name : ROWASIA2 
+
+Database      : BMT_Taawun
+
+User : Taawun
+
+pass : taawun2017
