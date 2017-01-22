@@ -1,28 +1,8 @@
 ﻿# Host: localhost  (Version 5.5.5-10.1.8-MariaDB)
-# Date: 2017-01-17 03:13:20
+# Date: 2017-01-22 17:56:11
 # Generator: MySQL-Front 5.4  (Build 4.115) - http://www.mysqlfront.de/
 
 /*!40101 SET NAMES utf8 */;
-
-#
-# Structure for table "admin"
-#
-
-DROP TABLE IF EXISTS `admin`;
-CREATE TABLE `admin` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(50) NOT NULL,
-  `alamat` text NOT NULL,
-  `no_telpon` varchar(30) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
-#
-# Data for table "admin"
-#
-
 
 #
 # Structure for table "buku_besar"
@@ -88,6 +68,9 @@ CREATE TABLE `data_bmt` (
 # Data for table "data_bmt"
 #
 
+/*!40000 ALTER TABLE `data_bmt` DISABLE KEYS */;
+INSERT INTO `data_bmt` VALUES ('','erefe',0,0,'34343','343434','javax.swing.JTextField[,450,14','343434',''),('700409','Tamzis Bina Utama',0,101000,'wonosobo','jawa tengah','javax.swing.JTextField[,450,14','tri wuryanto','0812345678'),('9988779','taawun jakarta',0,998877,'utan kayu','jakarta timur','javax.swing.JTextField[,450,14','andra','0887665541');
+/*!40000 ALTER TABLE `data_bmt` ENABLE KEYS */;
 
 #
 # Structure for table "data_peserta"
@@ -122,6 +105,9 @@ CREATE TABLE `data_peserta` (
 # Data for table "data_peserta"
 #
 
+/*!40000 ALTER TABLE `data_peserta` DISABLE KEYS */;
+INSERT INTO `data_peserta` VALUES ('3674032808910008','2017-01-19','Andra Kusumo','JL.Merak No.19 RT/RW 003/008,Pondok aren, tangerang 15222','Jakarta','1991-08-28','Serang','Import eksport','001001001','1550003748046',20000000,'2017-01-19','2020-01-19',36,600000,600000,1200000),('36742810910008','2017-01-20','andra','merak19','weton','2017-01-03','jember','sandang pangan','7689065','0987654111',2300000,'2017-01-20','2021-01-19',48,69000,69000,138000);
+/*!40000 ALTER TABLE `data_peserta` ENABLE KEYS */;
 
 #
 # Structure for table "jurnal"
@@ -184,15 +170,16 @@ CREATE TABLE `user` (
   `NAMA` varchar(60) NOT NULL,
   `PASSWORD` varchar(20) NOT NULL,
   `PASSLAMA` varchar(30) NOT NULL DEFAULT '',
+  `KONFIRMPASS` varchar(30) NOT NULL DEFAULT '',
   `KEWENANGAN` varchar(30) NOT NULL,
   `KETERANGAN` varchar(100) NOT NULL,
   PRIMARY KEY (`NOMOR`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "user"
 #
 
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'ANDRA','QWERTY123','admin123','Admin','Superuser');
+INSERT INTO `user` VALUES (1,'andra','admin','admin','admin','superadmin','superadmin');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
