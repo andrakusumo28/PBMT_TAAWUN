@@ -50,7 +50,7 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
         txtPassBaru.addKeyListener(this);
         txtKonfirmPass.addKeyListener(this);
     }
-
+    
     public void koneksi() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -83,7 +83,7 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
         txtnama.setText("");
         txtnomor.setText("");
         txtrole.setText("");
-        //txtPassLama.requestFocus();
+        txtPassLama.requestFocus();
     }
 
     private void ubah() {
