@@ -1,7 +1,7 @@
 !.gitignore
-/build/
-/dist/
-/nbproject/
-/test/
+build/
+dist/
+nbproject/
+test/
 build.xml
 manifest.mf
