@@ -32,7 +32,7 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
         ubah();
         txtPassLama.requestFocusInWindow();
     }
-    
+
     private void makeCenter() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Dimension frameSize = this.getSize();
@@ -45,12 +45,12 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
         this.setLocation((screenSize.width - frameSize.width) / 2,
                 (screenSize.height - frameSize.height) / 2);
     }
-    
+
     public void kupingTombol() {
         txtPassBaru.addKeyListener(this);
         txtKonfirmPass.addKeyListener(this);
     }
-    
+
     public void koneksi() {
         try {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");//("com.mysql.jdbc.Driver");
@@ -83,9 +83,11 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
         txtnama.setText("");
         txtnomor.setText("");
         txtrole.setText("");
+        txtnotes.setText("");
         txtPassLama.requestFocus();
     }
 
+    //ubah data user/admin (belum sukses)
     private void ubah() {
 
         //validasi 
@@ -136,7 +138,7 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
             try {
                 String oldPass = "";
                 koneksi();
-                String sql = "select NAMA FROM [dbo].[user]";
+                String sql = "select * FROM [dbo].[user]";
                 rs = stmt.executeQuery(sql);
                 if (rs.next()) {
                     oldPass = rs.getString(1);
@@ -150,10 +152,10 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
                                 //ps.setString(1, txtUser.getText());
                                 ps.setString(1, txtnomor.getText());
                                 ps.setString(2, txtnama.getText());
-                                ps.setString(3, txtrole.getText());
+                                ps.setString(3, txtPassBaru.getText());
                                 ps.setString(4, txtPassLama.getText());
-                                ps.setString(5, txtPassBaru.getText());
-                                ps.setString(6, txtKonfirmPass.getText());
+                                ps.setString(5, txtKonfirmPass.getText());
+                                ps.setString(6, txtrole.getText());
                                 ps.setString(7, txtnotes.getText());
                                 if (ps.executeUpdate() > 0) {
                                     JOptionPane.showMessageDialog(null, "Password Berhasil Diubah",
@@ -181,12 +183,42 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
 
         }
     }
-    
-    
-    private void save(){
-    
-}
-    
+
+    //insert data user/admin
+    private void save() {
+
+        try {
+            koneksi();
+            String save
+                    = "INSERT INTO [dbo].[user]"
+                    + "([NOMOR]"
+                    + ",[NAMA]"
+                    + ",[PASSWORD]"
+                    + ",[PASSLAMA]"
+                    + ",[KONFIRMPASS]"
+                    + ",[ROLE]"
+                    + ",[KETERANGAN])VALUES ("
+                    + "?, ?, ?, ?, ?, ?, ?)";
+            ps = con.prepareStatement(save);
+            //ps.setString(1, txtUser.getText());
+            ps.setString(1, txtnomor.getText());
+            ps.setString(2, txtnama.getText());
+            ps.setString(3, txtPassBaru.getText());
+            ps.setString(4, txtPassLama.getText());
+            ps.setString(5, txtKonfirmPass.getText());
+            ps.setString(6, txtrole.getText());
+            ps.setString(7, txtnotes.getText());
+            if (ps.executeUpdate() > 0) {
+                JOptionPane.showMessageDialog(null, "Data User Berhasil Disimpan",
+                        "Informasi", JOptionPane.INFORMATION_MESSAGE);
+                bersih();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -458,11 +490,11 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
 
         // TODO add your handling code here:}//GEN-LAST:event_txtUserActionPerformed
     }
-    
+
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
         // TODO add your handling code here:
+        save();
     }//GEN-LAST:event_btn_saveActionPerformed
-    
 
     /**
      * @param args the command line arguments

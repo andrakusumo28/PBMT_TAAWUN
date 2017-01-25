@@ -316,7 +316,7 @@ public class MenuUtama extends javax.swing.JFrame {
     private void DaftarPesertaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DaftarPesertaActionPerformed
         // TODO add your handling code here:
         Form.Internal.DftrPeserta dftr_peserta = new DftrPeserta();
-        DesktopBackground.add(dftr_peserta);
+        DesktopBackground.add(dftr_peserta);   
         dftr_peserta.setVisible(true);
         //dftr_peserta.setLocation(MAXIMIZED_BOTH);
     }//GEN-LAST:event_DaftarPesertaActionPerformed
