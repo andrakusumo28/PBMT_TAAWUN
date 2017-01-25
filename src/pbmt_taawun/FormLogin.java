@@ -5,6 +5,7 @@ import java.sql.*;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import koneksi.Koneksi;
 
 /**
  *
@@ -16,37 +17,43 @@ public class FormLogin extends javax.swing.JFrame {
     public Connection conn;
     public ResultSet Rs;
     public Statement cn;
-
+    koneksi.Koneksi konek = new Koneksi();
+    MenuUtama menu = new MenuUtama();
     public FormLogin() {
         initComponents();
         this.setLocationRelativeTo(this);
         //this.setExtendedState(MAXIMIZED_BOTH);
     }
     
-    public void koneksi() {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pbmt_taawun", "root", "");
-            cn = conn.createStatement();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "koneksi gagal", "informasi", JOptionPane.ERROR_MESSAGE);
-            System.out.println(e.getMessage());
-        }
-    }
+//    public void koneksi() {
+//        try {
+//            Class.forName("com.mysql.jdbc.Driver");
+//            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pbmt_taawun", "root", "");
+//            cn = conn.createStatement();
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "koneksi gagal", "informasi", JOptionPane.ERROR_MESSAGE);
+//            System.out.println(e.getMessage());
+//        }
+//    }
 
     /**
      *
      */
     public void cariuser() {
         try {
-            koneksi();
-            String sql = "Select * from user where NAMA='" + txtuser.getText()
+            conn = konek.bukaKoneksi();
+            cn = conn.createStatement();
+            String sql = "Select * from users where NAMA='" + txtuser.getText()
                     + "' and password='" + txtpass.getText() + "'";
+            System.out.println(sql.toString());
             ResultSet rs = cn.executeQuery(sql);
             if (rs.next()) {
                 JOptionPane.showMessageDialog(null, "Login Anda Berhasil",
                         "Informasi", JOptionPane.INFORMATION_MESSAGE);
-                new MenuUtama().show();
+                
+//                new MenuUtama().show();
+                menu.show();
+                menu.Assignmenu(rs.getString(4).toString());
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Username [" + txtuser.getText()
@@ -59,6 +66,7 @@ public class FormLogin extends javax.swing.JFrame {
             txtpass.setText("");
             txtuser.requestFocus();
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
