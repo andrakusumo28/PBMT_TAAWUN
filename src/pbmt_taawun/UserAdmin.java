@@ -53,8 +53,8 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
     
     public void koneksi() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/pbmt_taawun", "root", "");
+            Class.forName("net.sourceforge.jtds.jdbc.Driver");//("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:jtds:sqlserver://localhost:1433/pbmt_taawun", "sa", "0911500908");//("jdbc:mysql://localhost:3306/pbmt_taawun", "root", "");
             stmt = con.createStatement();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Koneksi Gagal!", "Error", JOptionPane.ERROR_MESSAGE);
@@ -65,7 +65,7 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
     private void user() {
         try {
             koneksi();
-            String sql = "select NAMA from user";
+            String sql = "select NAMA FROM [dbo].[user]";
             rs = con.createStatement().executeQuery(sql);
             if (rs.next()) {
                 txtUser.setText(rs.getString(1));
@@ -136,7 +136,7 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
             try {
                 String oldPass = "";
                 koneksi();
-                String sql = "select NAMA from user";
+                String sql = "select NAMA FROM [dbo].[user]";
                 rs = stmt.executeQuery(sql);
                 if (rs.next()) {
                     oldPass = rs.getString(1);
@@ -145,7 +145,7 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
                             int reply = javax.swing.JOptionPane.showConfirmDialog(null, "Yakin Akan Diubah?",
                                     "Konfirmasi", javax.swing.JOptionPane.YES_NO_OPTION);
                             if (reply == javax.swing.JOptionPane.YES_OPTION) {
-                                String ubahPass = "update user set NOMOR=?, NAMA=?, PASSWORD=?, PASSLAMA=?, KONFIRMPASS=? KEWENANGAN=? KETERANGAN=? where NAMA=''";
+                                String ubahPass = "update [dbo].[user] set NOMOR=?, NAMA=?, PASSWORD=?, PASSLAMA=?, KONFIRMPASS=? ROLE=? KETERANGAN=? where NAMA=''";
                                 ps = con.prepareStatement(ubahPass);
                                 //ps.setString(1, txtUser.getText());
                                 ps.setString(1, txtnomor.getText());

@@ -21,6 +21,6 @@ public class Main {
             e.printStackTrace();
         }
         
-        new FormLogin().show();//new LoginForm().show();
+        new MenuUtama().show();//new LoginForm().show();
 }
 }

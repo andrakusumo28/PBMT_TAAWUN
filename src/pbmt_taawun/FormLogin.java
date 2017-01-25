@@ -56,7 +56,7 @@ public class FormLogin extends javax.swing.JFrame {
         try {
             conn = konek.bukaKoneksi();
             cn = conn.createStatement();
-            String sql = "Select * from users where NAMA='" + txtuser.getText()
+            String sql = "Select * from dbo.user where NAMA='" + txtuser.getText()
                     + "' and password='" + txtpass.getText() + "'";
             System.out.println(sql.toString());
             ResultSet rs = cn.executeQuery(sql);

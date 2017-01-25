@@ -1,5 +1,48 @@
 package koneksi;
+  
+  import java.sql.Connection;   
+  import java.sql.DriverManager;   
+  import java.sql.SQLException;   
+  
+ 
+  public class Koneksi {   
+   private Connection connect;   
+   private String driverName = "net.sourceforge.jtds.jdbc.Driver"; // Driver Untuk Koneksi Ke SQLServer   
+   private String jdbc = "jdbc:jtds:sqlserver://";   
+   private String host = "localhost:"; // Host ini Bisa Menggunakan IP Anda, Contoh : 192.168.100.100   
+   private String port = "1433/"; // Port Default SQLServer   
+   private String database = "pbmt_taawun"; // Ini Database yang akan digunakan   
+   private String url = jdbc + host + port + database;   
+   private String username = "sa"; // username default SQLServer   
+   private String password = "0911500908";   
+   
+   
+   public Connection bukaKoneksi() throws SQLException {   
+    if (connect == null) {   
+     try {   
+      Class.forName(driverName);   
+      System.out.println("Class Driver Ditemukan");   
+      try {   
+       connect = DriverManager.getConnection(url, username, password);   
+       System.out.println("Koneksi Database Sukses");   
+      } catch (SQLException se) {   
+       System.out.println("Koneksi Database Gagal : " + se);   
+       System.exit(0);   
+      }   
+     } catch (ClassNotFoundException cnfe) {   
+      System.out.println("Class Driver Tidak Ditemukan, Terjadi Kesalahan Pada : " + cnfe);   
+      System.exit(0);   
+     }   
+    }   
+    return connect;   
+   }   
+  } 
 
+
+
+
+
+/*
 import java.sql.*;
 import java.util.Properties;
 import java.util.logging.Logger;
@@ -8,13 +51,13 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Administrator
- */
+ 
 public class Koneksi {
 
     /**
      *
      * @return @throws SQLException
-     */
+     
     public Connection bukaKoneksi() throws SQLException {
 
         Connection connect;
@@ -36,6 +79,7 @@ public class Koneksi {
             return null;
         }
     }
+
 
     /*test koneksi sql server
      public class test_koneksi {   
@@ -68,5 +112,5 @@ public class Koneksi {
             return connect;   
         }   
      }
-     */
-}
+)*/
+
