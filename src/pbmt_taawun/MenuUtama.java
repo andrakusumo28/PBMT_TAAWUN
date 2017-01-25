@@ -377,20 +377,20 @@ public class MenuUtama extends javax.swing.JFrame {
         user.setVisible(true);
     }//GEN-LAST:event_useradminActionPerformed
 
-    private void aggt_bmtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggt_bmtActionPerformed
-        // TODO add your handling code here:
-        crud_anggota crgt = new crud_anggota();
-        DesktopBackground.add(crgt);
-        crgt.setVisible(true);
-        
-    }//GEN-LAST:event_aggt_bmtActionPerformed
-
     private void cetaklaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cetaklaporanActionPerformed
         // TODO add your handling code here:
         cetaklaporan cetak = new cetaklaporan();
         DesktopBackground.add(cetak);
         cetak.setVisible(true);
     }//GEN-LAST:event_cetaklaporanActionPerformed
+
+    private void aggt_bmtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aggt_bmtActionPerformed
+        // TODO add your handling code here:
+        crud_anggota crgt = new crud_anggota();
+        DesktopBackground.add(crgt);
+        crgt.setVisible(true);
+
+    }//GEN-LAST:event_aggt_bmtActionPerformed
 
     private void Daftar_BMTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Daftar_BMTActionPerformed
         // TODO add your handling code here:
@@ -446,11 +446,6 @@ public class MenuUtama extends javax.swing.JFrame {
     
     
 //fungsi label waktu
-
-    /**
-     *
-     */
-    
     public void CurrentDate() {
         ActionListener action = new ActionListener() {
             public void actionPerformed(ActionEvent a) {
@@ -517,8 +512,8 @@ public class MenuUtama extends javax.swing.JFrame {
     {
         if(role.equals("admin"))
         {
-            Daftar_BMT.setVisible(false);
-            aggt_bmt.setVisible(false);
+            Daftar_BMT.setVisible(true);
+            aggt_bmt.setVisible(true);
         }
     }
 }
