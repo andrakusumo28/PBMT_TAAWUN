@@ -10,83 +10,63 @@ import javax.swing.JOptionPane;
  * @author Administrator
  */
 public class Koneksi {
-    
-//    public static Connection con;
-//    
-//    public static Connection getConnection() throws SQLException {
-//        if (con == null) {
-//            //panggil Driver Mysql
-//            Driver driver = new Driver() {
-//
-//                @Override
-//                public Connection connect(String url, Properties info) throws SQLException {
-//                    throw new UnsupportedOperationException("Not supported yet.");
-//                }
-//
-//                @Override
-//                public boolean acceptsURL(String url) throws SQLException {
-//                    throw new UnsupportedOperationException("Not supported yet.");
-//                }
-//
-//                @Override
-//                public DriverPropertyInfo[] getPropertyInfo(String url, Properties info) throws SQLException {
-//                    throw new UnsupportedOperationException("Not supported yet.");
-//                }
-//
-//                @Override
-//                public int getMajorVersion() {
-//                    throw new UnsupportedOperationException("Not supported yet.");
-//                }
-//
-//                @Override
-//                public int getMinorVersion() {
-//                    throw new UnsupportedOperationException("Not supported yet.");
-//                }
-//
-//                @Override
-//                public boolean jdbcCompliant() {
-//                    throw new UnsupportedOperationException("Not supported yet.");
-//                }
-//
-//                @Override
-//                public Logger getParentLogger() throws SQLFeatureNotSupportedException {
-//                    throw new UnsupportedOperationException("Not supported yet.");
-//                }
-//            };
-//            //buat koneksi
-//            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/db_arinda", "root", "");
-//        }
-//        return con;
-//    }
-    
+
     /**
      *
-     * @return
-     * @throws SQLException
+     * @return @throws SQLException
      */
-        
-    public  Connection bukaKoneksi()throws SQLException{
+    public Connection bukaKoneksi() throws SQLException {
 
         Connection connect;
-  	try{
-            Class.forName("com.mysql.jdbc.Driver");
-            connect=DriverManager.getConnection("jdbc:mysql://localhost:3306/pbmt_taawun","root","");
+        try {
+            Class.forName("net.sourceforge.jtds.jdbc.Driver");//("com.mysql.jdbc.Driver");
+            connect = DriverManager.getConnection("jdbc:jtds:sqlserver://localhost:1433/pbmt_taawun", "sa", "0911500908");//("jdbc:mysql://localhost:3306/pbmt_taawun", "root", "");
             return connect;
-  	}
-  	catch(SQLException sqlexc){
-            JOptionPane.showMessageDialog(null,sqlexc,"Koneksi Database",JOptionPane.WARNING_MESSAGE);
+        } catch (SQLException sqlexc) {
+            JOptionPane.showMessageDialog(null, sqlexc, "Koneksi Database", JOptionPane.WARNING_MESSAGE);
             System.exit(0);
             return null;
-  	}
-  	catch(ClassNotFoundException classexc){
-            JOptionPane.showMessageDialog(null,classexc,"Koneksi Database",JOptionPane.WARNING_MESSAGE);
+        } catch (ClassNotFoundException classexc) {
+            JOptionPane.showMessageDialog(null, classexc, "Koneksi Database", JOptionPane.WARNING_MESSAGE);
             System.exit(0);
             return null;
-  	}
-  	catch(Exception exc){
-            JOptionPane.showMessageDialog(null,exc,"Koneksi Database",JOptionPane.WARNING_MESSAGE);
+        } catch (Exception exc) {
+            JOptionPane.showMessageDialog(null, exc, "Koneksi Database", JOptionPane.WARNING_MESSAGE);
             System.exit(0);
             return null;
-  	}
+        }
     }
+
+    /*test koneksi sql server
+     public class test_koneksi {   
+     private Connection connect;   
+     private String driverName = "net.sourceforge.jtds.jdbc.Driver"; //  
+     private String jdbc = "jdbc:jtds:sqlserver://";   
+     private String host = "localhost:"; //   
+     private String port = "1433/"; //   
+     private String database = "pbmt_taawun"; //    
+     private String url = jdbc + host + port + database;   
+     private String username = "sa"; //  
+     private String password = "0911500908";   
+     public Connection getKoneksi() throws SQLException {   
+        if (connect == null) {   
+            try {   
+                Class.forName(driverName);   
+                System.out.println("Class Driver Ditemukan");   
+            try {   
+                connect = DriverManager.getConnection(url, username, password);   
+                System.out.println("Koneksi Database Sukses");   
+        } catch (SQLException se) {   
+                System.out.println("Koneksi Database Gagal : " + se);   
+                System.exit(0);   
+        }   
+        } catch (ClassNotFoundException cnfe) {   
+                System.out.println("Class Driver Tidak Ditemukan, Terjadi Kesalahan Pada : " + cnfe);   
+                System.exit(0);   
+        }   
+        }   
+            return connect;   
+        }   
+     }
+     */
 }
