@@ -512,4 +512,13 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JMenu mLaporan;
     private javax.swing.JMenuItem useradmin;
     // End of variables declaration//GEN-END:variables
+
+    public void Assignmenu(String role)
+    {
+        if(role.equals("admin"))
+        {
+            Daftar_BMT.setVisible(false);
+            aggt_bmt.setVisible(false);
+        }
+    }
 }

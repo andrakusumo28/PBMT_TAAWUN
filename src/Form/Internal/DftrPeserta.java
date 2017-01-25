@@ -647,6 +647,7 @@ public class DftrPeserta extends javax.swing.JInternalFrame {
 
     private void clearData() {
         no_ktp.setText("");
+        no_ktp.setEnabled(true);
         nama.setText("");
         alamat.setText("");
         tmpt_lahir.setText("");
@@ -661,7 +662,7 @@ public class DftrPeserta extends javax.swing.JInternalFrame {
         jangka_waktu.setText("");
         iuran_jiwa.setText("0");
         iuran_jiwa.setEnabled(false);
-        iuran_kebakaran.setText("");
+        iuran_kebakaran.setText("0");
         iuran_kebakaran.setEnabled(false);
     }
 }
