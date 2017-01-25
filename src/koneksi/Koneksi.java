@@ -69,8 +69,8 @@ public class Koneksi {
 
         Connection connect;
   	try{
-            Class.forName("com.mysql.jdbc.Driver");
-            connect=DriverManager.getConnection("jdbc:mysql://localhost:3306/pbmt_taawun","root","");
+            Class.forName("net.sourceforge.jtds.jdbc.Driver");
+            connect=DriverManager.getConnection("jdbc:jtds:sqlserver://10.100.1.60/testing","sa","m3d1c4R3177");
             return connect;
   	}
   	catch(SQLException sqlexc){
