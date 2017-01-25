@@ -7,7 +7,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import java.sql.Connection;   
 import java.sql.DriverManager;   
-import java.sql.SQLException; 
+import java.sql.SQLException;      
 import koneksi.Koneksi;
 
 /**

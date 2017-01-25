@@ -7,13 +7,13 @@ package koneksi;
  
   public class Koneksi {   
    private Connection connect;   
-   private String driverName = "net.sourceforge.jtds.jdbc.Driver"; // Driver Untuk Koneksi Ke SQLServer   
+   private String driverName = "net.sourceforge.jtds.jdbc.Driver";   
    private String jdbc = "jdbc:jtds:sqlserver://";   
-   private String host = "localhost:"; // Host ini Bisa Menggunakan IP Anda, Contoh : 192.168.100.100   
-   private String port = "1433/"; // Port Default SQLServer   
-   private String database = "pbmt_taawun"; // Ini Database yang akan digunakan   
+   private String host = "localhost:";    
+   private String port = "1433/";   
+   private String database = "pbmt_taawun";   
    private String url = jdbc + host + port + database;   
-   private String username = "sa"; // username default SQLServer   
+   private String username = "sa";   
    private String password = "0911500908";   
    
    

@@ -27,41 +27,17 @@ public final class InfoTagihan extends javax.swing.JInternalFrame {
         tampiltabel();
     }
     Koneksi koneksi;
-
-    /**
-     *
-     */
     public Connection conn;
-
-    /**
-     *
-     */
     public ResultSet  rs;
-
-    /**
-     *
-     */
     public ResultSet  rs1;
-
-    /**
-     *
-     */
     public Statement  stmt;
-
-    /**
-     *
-     */
     public Statement  stmt1;
 
-    /**
-     *
-     * @throws SQLException
-     */
     public void conn() throws SQLException {
         try {
             conn=null;
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pbmt_taawun", "root", "");
+            Class.forName("net.sourceforge.jtds.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:jtds:sqlserver://localhost:1433/pbmt_taawun", "sa", "0911500908");
 
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(InfoTagihan.class.getName()).log(Level.SEVERE, null, ex);
@@ -77,10 +53,7 @@ public final class InfoTagihan extends javax.swing.JInternalFrame {
      *
      */
     public void tampiltabel() {
-        DefaultTableModel tbltagihan = new DefaultTableModel();
-        //tbltagihan.addColumn("KODE MAPEL");
-        //tbltagihan.addColumn("NAMA MAPEL");
-        //tbltagihan.addColumn("KKM");
+        DefaultTableModel tbltagihan = new DefaultTableModel();       
         try {
             conn();
             String sql = "select * from data_peserta";
@@ -165,8 +138,7 @@ public final class InfoTagihan extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_nmbmt2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();

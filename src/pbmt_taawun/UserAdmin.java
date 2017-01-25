@@ -184,7 +184,7 @@ public class UserAdmin extends javax.swing.JInternalFrame implements
         }
     }
 
-    //insert data user/admin
+    //insert data user/admin   
     private void save() {
 
         try {

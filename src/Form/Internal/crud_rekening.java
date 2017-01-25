@@ -1,25 +1,46 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Form.Internal;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import koneksi.Koneksi;
+import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Administrator
  */
 public class crud_rekening extends javax.swing.JInternalFrame {
-
-    /**
-     * Creates new form crud_rekening
-     */
+    
+    Koneksi koneksi;
+    private java.sql.Connection con;
+    private java.sql.Statement stmt;
+    private java.sql.ResultSet rs;
+    private java.sql.PreparedStatement ps;
+   
     public crud_rekening() {
         initComponents();
         makeCenter();
+    }
+    
+    public void koneksi() {
+        try {
+            Class.forName("net.sourceforge.jtds.jdbc.Driver");//("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:jtds:sqlserver://localhost:1433/pbmt_taawun", "sa", "0911500908");//("jdbc:mysql://localhost:3306/pbmt_taawun", "root", "");
+            stmt = con.createStatement();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Koneksi Gagal!", "Error", JOptionPane.ERROR_MESSAGE);
+            System.out.println(e.getMessage());
+        }
+    }
+    
+    private void bersihdaftarubah() {
+        
+        txtdaftar_norek.setText("");
+        txtnoteDFTR.setText("");
+        txtnote_ubah.setText("");
+        txtubah_rek.setText("");
+        cekrek_ubah.setText("");
     }
     
     private void makeCenter() {
@@ -48,21 +69,21 @@ public class crud_rekening extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        nama_rek = new javax.swing.JTextField();
-        aerithActionButton1 = new aerith.swing.AerithActionButton();
-        aerithActionButton2 = new aerith.swing.AerithActionButton();
+        txtdaftar_norek = new javax.swing.JTextField();
+        cancelDFTR = new aerith.swing.AerithActionButton();
+        Daftar = new aerith.swing.AerithActionButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtnoteDFTR = new javax.swing.JTextArea();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        nama_rek1 = new javax.swing.JTextField();
+        cekrek_ubah = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        no_rek1 = new javax.swing.JTextField();
-        aerithActionButton3 = new aerith.swing.AerithActionButton();
-        aerithActionButton4 = new aerith.swing.AerithActionButton();
+        txtubah_rek = new javax.swing.JTextField();
+        cancelUBAH = new aerith.swing.AerithActionButton();
+        Ubah = new aerith.swing.AerithActionButton();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txtnote_ubah = new javax.swing.JTextArea();
 
         setClosable(true);
         setResizable(true);
@@ -75,34 +96,44 @@ public class crud_rekening extends javax.swing.JInternalFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("KETERANGAN :");
 
-        aerithActionButton1.setText("CANCEL");
-        aerithActionButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        cancelDFTR.setText("CANCEL");
+        cancelDFTR.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        cancelDFTR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelDFTRActionPerformed(evt);
+            }
+        });
 
-        aerithActionButton2.setText("DAFTAR");
-        aerithActionButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Daftar.setText("DAFTAR");
+        Daftar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        Daftar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DaftarActionPerformed(evt);
+            }
+        });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtnoteDFTR.setColumns(20);
+        txtnoteDFTR.setRows(5);
+        jScrollPane1.setViewportView(txtnoteDFTR);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(aerithActionButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cancelDFTR, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(aerithActionButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                    .addComponent(nama_rek))
-                .addContainerGap(16, Short.MAX_VALUE))
+                        .addComponent(Daftar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtdaftar_norek)
+                    .addComponent(jScrollPane1))
+                .addGap(13, 13, 13))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,17 +141,17 @@ public class crud_rekening extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(nama_rek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtdaftar_norek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(aerithActionButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(aerithActionButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Daftar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cancelDFTR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Daftar Rekening", jPanel1);
@@ -128,27 +159,33 @@ public class crud_rekening extends javax.swing.JInternalFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("CEK REKENING :");
 
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel8.setText("UBAH REKENING :");
-
-        no_rek1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                no_rek1ActionPerformed(evt);
+        cekrek_ubah.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cekrek_ubahKeyPressed(evt);
             }
         });
 
-        aerithActionButton3.setText("CANCEL");
-        aerithActionButton3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel8.setText("UBAH REKENING :");
 
-        aerithActionButton4.setText("DAFTAR");
-        aerithActionButton4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtubah_rek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtubah_rekActionPerformed(evt);
+            }
+        });
+
+        cancelUBAH.setText("CANCEL");
+        cancelUBAH.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+
+        Ubah.setText("UBAH");
+        Ubah.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel9.setText("KETERANGAN :");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        txtnote_ubah.setColumns(20);
+        txtnote_ubah.setRows(5);
+        jScrollPane2.setViewportView(txtnote_ubah);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -162,14 +199,14 @@ public class crud_rekening extends javax.swing.JInternalFrame {
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(no_rek1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtubah_rek, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(aerithActionButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cancelUBAH, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(53, 53, 53)
-                        .addComponent(aerithActionButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Ubah, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nama_rek1))
-                .addContainerGap(13, Short.MAX_VALUE))
+                    .addComponent(cekrek_ubah))
+                .addGap(13, 13, 13))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,11 +214,11 @@ public class crud_rekening extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(nama_rek1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cekrek_ubah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(no_rek1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtubah_rek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
@@ -190,9 +227,9 @@ public class crud_rekening extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(aerithActionButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cancelUBAH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(aerithActionButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Ubah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
@@ -212,16 +249,60 @@ public class crud_rekening extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void no_rek1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_no_rek1ActionPerformed
+    private void txtubah_rekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtubah_rekActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_no_rek1ActionPerformed
+        // gak dipake event apa2
+    }//GEN-LAST:event_txtubah_rekActionPerformed
 
+    private void DaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DaftarActionPerformed
+        // TODO add your handling code here:
+        daftar();
+    }//GEN-LAST:event_DaftarActionPerformed
+
+    private void cekrek_ubahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cekrek_ubahKeyPressed
+        // TODO add your handling code here:
+        //input norek > press enter > muncul data rekening yg akan diubah (hanya mengambil norek dan keterangan)
+    }//GEN-LAST:event_cekrek_ubahKeyPressed
+
+    private void cancelDFTRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelDFTRActionPerformed
+        // TODO add your handling code here:
+        bersihdaftarubah();
+    }//GEN-LAST:event_cancelDFTRActionPerformed
+    
+     //insert data rekening
+    private void daftar() {
+        try {
+            koneksi();
+            String daftar
+                    = "INSERT INTO [dbo].[buku_besar]"
+                    + "([REKENING]"
+                    + ",[KETERANGAN])VALUES(" + "?,?)";
+            ps = con.prepareStatement(daftar);
+            ps.setString(1, txtdaftar_norek.getText());
+            ps.setString(2, txtnoteDFTR.getText());
+           //ps.setString(3, txtSaldo.getText()); //> belum pasti ditambahkan
+            if (ps.executeUpdate() > 0) {
+                JOptionPane.showMessageDialog(null, "Data Rekening Berhasil Disimpan",
+                        "Informasi", JOptionPane.INFORMATION_MESSAGE);
+                bersihdaftarubah();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    //ubah data rekening (belum)
+    private void ubah() {
+        
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private aerith.swing.AerithActionButton aerithActionButton1;
-    private aerith.swing.AerithActionButton aerithActionButton2;
-    private aerith.swing.AerithActionButton aerithActionButton3;
-    private aerith.swing.AerithActionButton aerithActionButton4;
+    private aerith.swing.AerithActionButton Daftar;
+    private aerith.swing.AerithActionButton Ubah;
+    private aerith.swing.AerithActionButton cancelDFTR;
+    private aerith.swing.AerithActionButton cancelUBAH;
+    private javax.swing.JTextField cekrek_ubah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
@@ -232,10 +313,9 @@ public class crud_rekening extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField nama_rek;
-    private javax.swing.JTextField nama_rek1;
-    private javax.swing.JTextField no_rek1;
+    private javax.swing.JTextField txtdaftar_norek;
+    private javax.swing.JTextArea txtnoteDFTR;
+    private javax.swing.JTextArea txtnote_ubah;
+    private javax.swing.JTextField txtubah_rek;
     // End of variables declaration//GEN-END:variables
 }
