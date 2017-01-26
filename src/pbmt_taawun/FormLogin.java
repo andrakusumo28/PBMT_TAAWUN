@@ -38,16 +38,6 @@ public class FormLogin extends javax.swing.JFrame {
 //            System.out.println(e.getMessage());
 //        }
 //    }
-    public void koneksi() {
-        try {
-            Class.forName("net.sourceforge.jtds.jdbc.Driver");//("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:jtds:sqlserver://localhost:1433/pbmt_taawun", "sa", "0911500908");//("jdbc:mysql://localhost:3306/pbmt_taawun", "root", "");
-            cn = conn.createStatement();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "koneksi gagal", "informasi", JOptionPane.ERROR_MESSAGE);
-            System.out.println(e.getMessage());
-        }
-    }
 
     /**
      *
