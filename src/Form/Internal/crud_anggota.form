@@ -74,13 +74,13 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txt_templahir" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jDateChooser1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtno_ktp" alignment="1" pref="231" max="32767" attributes="0"/>
-                          <Component id="txtnama" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" pref="231" max="32767" attributes="0"/>
+                          <Component id="tgl_lahir" alignment="0" max="32767" attributes="0"/>
+                          <Component id="nama" alignment="1" max="32767" attributes="0"/>
+                          <Component id="tmpt_lahir" alignment="0" min="-2" pref="112" max="-2" attributes="0"/>
+                          <Component id="no_ktp" alignment="0" min="-2" pref="158" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="6" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -90,18 +90,18 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jTextField1" max="32767" attributes="0"/>
-                                  <Component id="jTextField2" max="32767" attributes="0"/>
-                                  <Component id="jTextField3" pref="159" max="32767" attributes="0"/>
+                                  <Component id="lokasi" max="32767" attributes="0"/>
+                                  <Component id="jenis" max="32767" attributes="0"/>
+                                  <Component id="nik_bmt" pref="159" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="aerithActionButton1" min="-2" pref="92" max="-2" attributes="0"/>
+                              <Component id="btn_clear" min="-2" pref="92" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="aerithActionButton2" min="-2" pref="95" max="-2" attributes="0"/>
+                              <Component id="btn_daftar" min="-2" pref="95" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="29" max="32767" attributes="0"/>
+                      <EmptySpace pref="27" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -111,16 +111,16 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="aerithLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtno_ktp" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="no_ktp" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="aerithLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lokasi" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="aerithLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtnama" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nama" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="aerithLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jenis" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -128,12 +128,12 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="aerithLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="nik_bmt" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="aerithActionButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="aerithActionButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_clear" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_daftar" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jScrollPane1" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -141,14 +141,14 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="aerithLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_templahir" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tmpt_lahir" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="aerithLabel16" min="-2" max="-2" attributes="0"/>
-                          <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
+                          <Component id="tgl_lahir" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="53" max="32767" attributes="0"/>
+                      <EmptySpace pref="57" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -214,16 +214,17 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtno_ktp">
+            <Component class="javax.swing.JTextField" name="no_ktp">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtno_ktpActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="no_ktpActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="no_ktpKeyPressed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtnama">
+            <Component class="javax.swing.JTextField" name="nama">
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_templahir">
+            <Component class="javax.swing.JTextField" name="tmpt_lahir">
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+            <Component class="com.toedter.calendar.JDateChooser" name="tgl_lahir">
               <Properties>
                 <Property name="dateFormatString" type="java.lang.String" value="YYYY-MM-dd"/>
                 <Property name="maxSelectableDate" type="java.util.Date" value="null"/>
@@ -268,27 +269,33 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField1">
+            <Component class="javax.swing.JTextField" name="lokasi">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField2">
+            <Component class="javax.swing.JTextField" name="jenis">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField3">
+            <Component class="javax.swing.JTextField" name="nik_bmt">
             </Component>
-            <Component class="aerith.swing.AerithActionButton" name="aerithActionButton1">
+            <Component class="aerith.swing.AerithActionButton" name="btn_clear">
               <Properties>
                 <Property name="text" type="java.lang.String" value="CANCEL"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="18" style="1"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_clearActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="aerith.swing.AerithActionButton" name="aerithActionButton2">
+            <Component class="aerith.swing.AerithActionButton" name="btn_daftar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="DAFTAR"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="18" style="1"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_daftarActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>
@@ -297,7 +304,7 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTextArea" name="txtalamat">
+                <Component class="javax.swing.JTextArea" name="alamat">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
@@ -384,7 +391,7 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="aerithActionButton3" min="-2" pref="92" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                  <Component id="aerithActionButton4" min="-2" pref="95" max="-2" attributes="0"/>
+                                  <Component id="btn_ubah" min="-2" pref="95" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="37" max="32767" attributes="0"/>
@@ -419,7 +426,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="aerithActionButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="aerithActionButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btn_ubah" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
@@ -503,6 +510,7 @@
                 <Component class="javax.swing.JTextField" name="txtno_ktpubah">
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtno_ktpubahActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtno_ktpubahKeyPressed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtnama_ubah">
@@ -567,14 +575,20 @@
                       <Font name="Arial" size="18" style="1"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aerithActionButton3ActionPerformed"/>
+                  </Events>
                 </Component>
-                <Component class="aerith.swing.AerithActionButton" name="aerithActionButton4">
+                <Component class="aerith.swing.AerithActionButton" name="btn_ubah">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="SIMPAN"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Arial" size="18" style="1"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ubahActionPerformed"/>
+                  </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane2">
                   <AuxValues>

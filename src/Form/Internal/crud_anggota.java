@@ -2,13 +2,27 @@ package Form.Internal;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import koneksi.Koneksi;
 
 /**
  *
  * @author Administrator
  */
 public class crud_anggota extends javax.swing.JInternalFrame {
-
+    Date date = new Date();
+    Connection sqlConnection = null;
+    Statement sqlStatement = null;
+    ResultSet sqlResultSet = null;
+    koneksi.Koneksi conn = new Koneksi();
+    private static final DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     /**
      * Creates new form crud_anggota
      */
@@ -46,20 +60,20 @@ public class crud_anggota extends javax.swing.JInternalFrame {
         aerithLabel14 = new aerith.swing.AerithLabel();
         aerithLabel15 = new aerith.swing.AerithLabel();
         aerithLabel16 = new aerith.swing.AerithLabel();
-        txtno_ktp = new javax.swing.JTextField();
-        txtnama = new javax.swing.JTextField();
-        txt_templahir = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        no_ktp = new javax.swing.JTextField();
+        nama = new javax.swing.JTextField();
+        tmpt_lahir = new javax.swing.JTextField();
+        tgl_lahir = new com.toedter.calendar.JDateChooser();
         aerithLabel17 = new aerith.swing.AerithLabel();
         aerithLabel18 = new aerith.swing.AerithLabel();
         aerithLabel19 = new aerith.swing.AerithLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        aerithActionButton1 = new aerith.swing.AerithActionButton();
-        aerithActionButton2 = new aerith.swing.AerithActionButton();
+        lokasi = new javax.swing.JTextField();
+        jenis = new javax.swing.JTextField();
+        nik_bmt = new javax.swing.JTextField();
+        btn_clear = new aerith.swing.AerithActionButton();
+        btn_daftar = new aerith.swing.AerithActionButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtalamat = new javax.swing.JTextArea();
+        alamat = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         pnl_anggota1 = new javax.swing.JPanel();
         aerithLabel3 = new aerith.swing.AerithLabel();
@@ -78,7 +92,7 @@ public class crud_anggota extends javax.swing.JInternalFrame {
         txt_jnsusaha_ubah = new javax.swing.JTextField();
         txt_nikbmtubah = new javax.swing.JTextField();
         aerithActionButton3 = new aerith.swing.AerithActionButton();
-        aerithActionButton4 = new aerith.swing.AerithActionButton();
+        btn_ubah = new aerith.swing.AerithActionButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtalamat_ubah = new javax.swing.JTextArea();
 
@@ -114,15 +128,20 @@ public class crud_anggota extends javax.swing.JInternalFrame {
         aerithLabel16.setText("TANGGAL LAHIR :");
         aerithLabel16.setFont(new java.awt.Font("Default", 1, 12)); // NOI18N
 
-        txtno_ktp.addActionListener(new java.awt.event.ActionListener() {
+        no_ktp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtno_ktpActionPerformed(evt);
+                no_ktpActionPerformed(evt);
+            }
+        });
+        no_ktp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                no_ktpKeyPressed(evt);
             }
         });
 
-        jDateChooser1.setDateFormatString("YYYY-MM-dd");
-        jDateChooser1.setMaxSelectableDate(null);
-        jDateChooser1.setMinSelectableDate(new java.util.Date(-631173512000L));
+        tgl_lahir.setDateFormatString("YYYY-MM-dd");
+        tgl_lahir.setMaxSelectableDate(null);
+        tgl_lahir.setMinSelectableDate(new java.util.Date(-631173512000L));
 
         aerithLabel17.setForeground(new java.awt.Color(0, 0, 0));
         aerithLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -139,15 +158,25 @@ public class crud_anggota extends javax.swing.JInternalFrame {
         aerithLabel19.setText("NIK BMT :");
         aerithLabel19.setFont(new java.awt.Font("Default", 1, 12)); // NOI18N
 
-        aerithActionButton1.setText("CANCEL");
-        aerithActionButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btn_clear.setText("CANCEL");
+        btn_clear.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btn_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_clearActionPerformed(evt);
+            }
+        });
 
-        aerithActionButton2.setText("DAFTAR");
-        aerithActionButton2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btn_daftar.setText("DAFTAR");
+        btn_daftar.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btn_daftar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_daftarActionPerformed(evt);
+            }
+        });
 
-        txtalamat.setColumns(20);
-        txtalamat.setRows(5);
-        jScrollPane1.setViewportView(txtalamat);
+        alamat.setColumns(20);
+        alamat.setRows(5);
+        jScrollPane1.setViewportView(alamat);
 
         javax.swing.GroupLayout pnl_anggotaLayout = new javax.swing.GroupLayout(pnl_anggota);
         pnl_anggota.setLayout(pnl_anggotaLayout);
@@ -164,12 +193,12 @@ public class crud_anggota extends javax.swing.JInternalFrame {
                         .addComponent(aerithLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txt_templahir)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtno_ktp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                    .addComponent(txtnama, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                    .addComponent(tgl_lahir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nama, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tmpt_lahir, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(no_ktp, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
                 .addGroup(pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnl_anggotaLayout.createSequentialGroup()
                         .addGroup(pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -178,14 +207,14 @@ public class crud_anggota extends javax.swing.JInternalFrame {
                             .addComponent(aerithLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)))
+                            .addComponent(lokasi)
+                            .addComponent(jenis)
+                            .addComponent(nik_bmt, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)))
                     .addGroup(pnl_anggotaLayout.createSequentialGroup()
-                        .addComponent(aerithActionButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
-                        .addComponent(aerithActionButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                        .addComponent(btn_daftar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         pnl_anggotaLayout.setVerticalGroup(
             pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,36 +222,36 @@ public class crud_anggota extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(aerithLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtno_ktp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(no_ktp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(aerithLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lokasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(aerithLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtnama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(aerithLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jenis, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(aerithLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnl_anggotaLayout.createSequentialGroup()
                         .addGroup(pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(aerithLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nik_bmt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(aerithActionButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(aerithActionButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btn_clear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_daftar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(aerithLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_templahir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tmpt_lahir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnl_anggotaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(aerithLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(53, Short.MAX_VALUE))
+                    .addComponent(tgl_lahir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         tab_anggota.addTab("Daftar Anggota BMT", pnl_anggota);
@@ -261,6 +290,11 @@ public class crud_anggota extends javax.swing.JInternalFrame {
                 txtno_ktpubahActionPerformed(evt);
             }
         });
+        txtno_ktpubah.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtno_ktpubahKeyPressed(evt);
+            }
+        });
 
         jDateChooser2.setDateFormatString("YYYY-MM-dd");
         jDateChooser2.setMaxSelectableDate(null);
@@ -283,9 +317,19 @@ public class crud_anggota extends javax.swing.JInternalFrame {
 
         aerithActionButton3.setText("CANCEL");
         aerithActionButton3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        aerithActionButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aerithActionButton3ActionPerformed(evt);
+            }
+        });
 
-        aerithActionButton4.setText("SIMPAN");
-        aerithActionButton4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btn_ubah.setText("SIMPAN");
+        btn_ubah.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btn_ubah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ubahActionPerformed(evt);
+            }
+        });
 
         txtalamat_ubah.setColumns(20);
         txtalamat_ubah.setRows(5);
@@ -326,7 +370,7 @@ public class crud_anggota extends javax.swing.JInternalFrame {
                     .addGroup(pnl_anggota1Layout.createSequentialGroup()
                         .addComponent(aerithActionButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
-                        .addComponent(aerithActionButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btn_ubah, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         pnl_anggota1Layout.setVerticalGroup(
@@ -354,7 +398,7 @@ public class crud_anggota extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addGroup(pnl_anggota1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(aerithActionButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(aerithActionButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btn_ubah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnl_anggota1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -396,20 +440,117 @@ public class crud_anggota extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtno_ktpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtno_ktpActionPerformed
+    private void no_ktpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_no_ktpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtno_ktpActionPerformed
+    }//GEN-LAST:event_no_ktpActionPerformed
 
     private void txtno_ktpubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtno_ktpubahActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtno_ktpubahActionPerformed
 
+    private void btn_ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubahActionPerformed
+        // TODO add your handling code here:
+        try {
+            sqlConnection = conn.bukaKoneksi();
+            sqlStatement = sqlConnection.createStatement();
+            
+            StringBuffer buff = new StringBuffer();
+            buff.append("UPDATE data_anggota_bmt SET NAMA='").append(txtnama_ubah.getText()).append("',ALAMAT='")
+                .append(txtalamat_ubah.getText()).append(",TEMPAT_LAHIR='").append(txt_templahirubah.getText()).append(",TANGGAL_LAHIR='")
+                .append(sdf.format(jDateChooser2.getDate())).append(",LOKASI_USAHA='").append(txt_lksusahaubah.getText()).append(",JENIS_USAHA='")
+                .append(txt_jnsusaha_ubah.getText()).append(",NIK_BMT='").append(txt_nikbmtubah.getText())
+                .append("' WHERE NO_KTP='").append(no_ktp.getText()).append("' ");
+            
+            sqlResultSet = sqlStatement.executeQuery(buff.toString());
+            JOptionPane.showMessageDialog(null, "Update Data Success..", "Information", JOptionPane.INFORMATION_MESSAGE);
+            clear1();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btn_ubahActionPerformed
+
+    private void btn_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clearActionPerformed
+        // TODO add your handling code here:
+        clear();
+    }//GEN-LAST:event_btn_clearActionPerformed
+
+    private void btn_daftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_daftarActionPerformed
+        // TODO add your handling code here:
+        try {
+            if(no_ktp.getText() != null || nik_bmt.getText() != null)
+            {
+                sqlConnection = conn.bukaKoneksi();
+                sqlStatement = sqlConnection.createStatement();
+                
+                StringBuffer buff = new StringBuffer();
+                buff.append("INSERT INTO data_anggota_bmt VALUES('").append(no_ktp.getText()).append("','")
+                    .append(nama.getText()).append("','").append(alamat.getText()).append("','")
+                    .append(tmpt_lahir.getText()).append("','").append(sdf.format(tgl_lahir.getDate())).append("','")
+                    .append(lokasi.getText()).append("','").append(jenis.getText()).append("','")
+                    .append(nik_bmt.getText());
+                
+                sqlResultSet = sqlStatement.executeQuery(buff.toString());
+                
+                if(sqlResultSet.next())
+                {
+                    JOptionPane.showMessageDialog(null, "Save data success..!!", "Information", JOptionPane.ERROR);
+                    clear();
+                }
+                
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_btn_daftarActionPerformed
+
+    private void no_ktpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_no_ktpKeyPressed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_no_ktpKeyPressed
+
+    private void txtno_ktpubahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtno_ktpubahKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            
+            try {
+                sqlConnection = conn.bukaKoneksi();
+                sqlStatement = sqlConnection.createStatement();
+                
+                String ktp = no_ktp.getText().trim();
+                StringBuffer buff = new StringBuffer();
+                buff.append("SELECT * FROM data_anggota_bmt WHERE NO_KTP ='").append(ktp).append("'");
+                sqlResultSet = sqlStatement.executeQuery(buff.toString());
+                
+                if(sqlResultSet.next())
+                {
+                    txtno_ktpubah.setEnabled(false);
+                    txtnama_ubah.setText(sqlResultSet.getString(2));
+                    txtalamat_ubah.setText(sqlResultSet.getString(3));
+                    txt_templahirubah.setText(sqlResultSet.getString(4));
+                    jDateChooser2.setDate(sqlResultSet.getDate(5));
+                    txt_lksusahaubah.setText(sqlResultSet.getString(6));
+                    txt_jnsusaha_ubah.setText(sqlResultSet.getString(7));
+                    txt_nikbmtubah.setText(sqlResultSet.getString(8));
+                }else{
+                    txtnama_ubah.isFocusable();
+                }
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+                    
+        }
+    }//GEN-LAST:event_txtno_ktpubahKeyPressed
+
+    private void aerithActionButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aerithActionButton3ActionPerformed
+        // TODO add your handling code here:
+        clear1();
+    }//GEN-LAST:event_aerithActionButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private aerith.swing.AerithActionButton aerithActionButton1;
-    private aerith.swing.AerithActionButton aerithActionButton2;
     private aerith.swing.AerithActionButton aerithActionButton3;
-    private aerith.swing.AerithActionButton aerithActionButton4;
     private aerith.swing.AerithLabel aerithLabel1;
     private aerith.swing.AerithLabel aerithLabel14;
     private aerith.swing.AerithLabel aerithLabel15;
@@ -426,27 +567,54 @@ public class crud_anggota extends javax.swing.JInternalFrame {
     private aerith.swing.AerithLabel aerithLabel25;
     private aerith.swing.AerithLabel aerithLabel3;
     private aerith.swing.AerithLabel aerithLabel4;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JTextArea alamat;
+    private aerith.swing.AerithActionButton btn_clear;
+    private aerith.swing.AerithActionButton btn_daftar;
+    private aerith.swing.AerithActionButton btn_ubah;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jenis;
+    private javax.swing.JTextField lokasi;
+    private javax.swing.JTextField nama;
+    private javax.swing.JTextField nik_bmt;
+    private javax.swing.JTextField no_ktp;
     private javax.swing.JPanel pnl_anggota;
     private javax.swing.JPanel pnl_anggota1;
     private javax.swing.JTabbedPane tab_anggota;
+    private com.toedter.calendar.JDateChooser tgl_lahir;
+    private javax.swing.JTextField tmpt_lahir;
     private javax.swing.JTextField txt_jnsusaha_ubah;
     private javax.swing.JTextField txt_lksusahaubah;
     private javax.swing.JTextField txt_nikbmtubah;
-    private javax.swing.JTextField txt_templahir;
     private javax.swing.JTextField txt_templahirubah;
-    private javax.swing.JTextArea txtalamat;
     private javax.swing.JTextArea txtalamat_ubah;
-    private javax.swing.JTextField txtnama;
     private javax.swing.JTextField txtnama_ubah;
-    private javax.swing.JTextField txtno_ktp;
     private javax.swing.JTextField txtno_ktpubah;
     // End of variables declaration//GEN-END:variables
+
+    public void clear()
+    {
+        no_ktp.setText("");
+        nama.setText("");
+        alamat.setText("");
+        tmpt_lahir.setText("");
+        tgl_lahir.setDate(date);
+        lokasi.setText("");
+        jenis.setText("");
+        nik_bmt.setText("");
+    }
+    
+     public void clear1()
+    {
+        txtno_ktpubah.setText("");
+        txtnama_ubah.setText("");
+        txtalamat_ubah.setText("");
+        txt_templahirubah.setText("");
+        jDateChooser2.setDate(date);
+        txt_lksusahaubah.setText("");
+        txt_jnsusaha_ubah.setText("");
+        txt_nikbmtubah.setText("");
+    }
 }
