@@ -205,7 +205,7 @@ public class crud_dataBMT extends javax.swing.JInternalFrame {
                     .addComponent(no_bmt)
                     .addComponent(nama_bmt)
                     .addComponent(no_agt_bmt, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 43, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
                 .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(panel_inputLayout.createSequentialGroup()
                         .addGroup(panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -232,7 +232,7 @@ public class crud_dataBMT extends javax.swing.JInternalFrame {
                             .addComponent(mpw, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(no_telp)
                             .addComponent(mpd, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                .addGap(10, 10, 10))
         );
         panel_inputLayout.setVerticalGroup(
             panel_inputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
