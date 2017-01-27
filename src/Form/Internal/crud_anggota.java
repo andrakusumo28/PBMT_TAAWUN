@@ -615,6 +615,7 @@ public class crud_anggota extends javax.swing.JInternalFrame {
         jDateChooser2.setDate(date);
         txt_lksusahaubah.setText("");
         txt_jnsusaha_ubah.setText("");
-        txt_nikbmtubah.setText("");
+        txt_nikbmtubah.setText(""); 
     }
+     
 }
